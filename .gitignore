@@ -1,0 +1,41 @@
+# Operating-system and editor clutter
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Local secrets; examples must contain placeholders only
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Agent-local settings
+.claude/settings.local.json
+
+# Local scratch work, logs, and large recordings
+.cache/
+*.log
+__pycache__/
+*.pyc
+/work/
+/tmp/
+/temp/
+
+# Add generated files for the chosen engine during kit installation.
+# Do not ignore source assets, evidence captures, or lockfiles by default.
+
+# Local source-template coordination; exclude from derived games
+/.coordination/
+
+# Superseded local correspondence retained outside published starter content
+/docs/process/2026-09-25-claude-to-astra-tool-library.md
