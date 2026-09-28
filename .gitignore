@@ -32,7 +32,7 @@ __pycache__/
 /temp/
 
 # Add generated files for the chosen engine during kit installation.
-# Do not ignore source assets, evidence captures, or lockfiles by default.
+# Do not ignore source assets, build screenshots, or lockfiles by default.
 
 # Local source-template coordination; exclude from derived games
 /.coordination/

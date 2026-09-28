@@ -1,12 +1,12 @@
 ---
 name: godot
-description: Inspect, edit, run, test, and capture Godot 4 scenes, scripts, and resources with portable helpers — including scripted scenarios, state assertions, and review-moment screenshots for evidence runs. Use for Godot implementation and verification tasks in this project.
+description: Inspect, edit, run, test, and capture Godot 4 scenes, scripts, and resources with portable helpers — including scripted scenarios, state assertions, and named-moment screenshots for build checks. Use for Godot implementation and verification tasks in this project.
 ---
 
 # Godot
 
-Follow the project AGENTS.md, the active milestone contract, and current user
-decisions. Use this skill's helpers where they reduce scene-editing, diagnostic,
+Follow the project AGENTS.md, DESIGN.md, the current build prompt or ticket, and
+current user decisions. Use this skill's helpers where they reduce scene-editing, diagnostic,
 or capture work. Upstream playbooks, architecture, and templates are optional
 references for an agreed task, not defaults to impose.
 
@@ -31,15 +31,16 @@ references for an agreed task, not defaults to impose.
 ## New projects and systems
 
 Read [game architecture](references/game-architecture.md) before scaffolding a
-project or a new gameplay system. It sets the defaults that make evidence runs
-possible: a simulation core testable without rendering, deterministic scenarios,
-direct GDScript tests, and review-moment captures.
+project or a new gameplay system. It sets the defaults that make build checks
+possible: a simulation core testable without rendering, a tuning file, an
+event-driven juice layer, debug hotkeys, deterministic scenarios, direct GDScript
+tests, and named-moment screenshots.
 
-## Evidence runs
+## Build checks
 
-For `$evidence-run`, use direct tests for G1, `scripts/debug/run_scenario.py` for
-G2 assertions and review-moment screenshots, and Movie Maker PNG sequences for
-motion moments. Commands are in [Windows commands](references/windows.md).
+For `$build-check`, use direct tests for rules, `scripts/debug/run_scenario.py`
+for scenario assertions and screenshots, and Movie Maker PNG sequences for motion
+and juice. Commands are in [Windows commands](references/windows.md).
 
 ## Save and scope boundaries
 

@@ -31,6 +31,15 @@ archive SHA-256 and every upstream payload file hash.
    inline `--params` form failed there because 5.1 strips JSON quotes. Scenario,
    capture, and Movie Maker commands were not rerun; each project verifies them
    once at install (see the kit README).
+3. **Game-director workflow (2026-09-28).** Documentation-only changes for the
+   template's switch from milestone contracts and evidence runs to one-shot
+   builds, tickets, and `$build-check`:
+   - `SKILL.md`: evidence-run pointers replaced with build-check pointers.
+   - `references/windows.md`: command groups renamed (build, rules, scenarios);
+     screenshots go to `docs/captures/<build>/`.
+   - `references/game-architecture.md`: added tuning file, event-driven juice
+     layer, and debug hotkeys; contract references now point to the build prompt.
+   Scripts are unchanged and no commands were rerun.
 
 ## Updating
 

@@ -1,21 +1,16 @@
----
-name: playtest-kit
-description: Prepare and record a human playtest of a milestone build — the task given, a no-coaching observation script, an observation form, and follow-up questions. Use when a milestone is ready for the user or another person to play.
----
-
-# Playtest kit
+# Playtest
 
 Human play is the acceptance evidence for fun, comprehension, and feel. Prepare a
 session that shows what a new player understands without help.
 
 ## Prepare
 
-- Build: the frozen candidate from the latest evidence run; note its commit.
-- Task: one sentence from the contract's human-playtest section, stated as a goal
-  ("deliver cargo to the east station"), not as instructions.
+- Build: the latest checked build in `STATE.md`; note its commit.
+- Task: one sentence tied to the top fun risk or the ticket being tested, stated
+  as a goal ("deliver cargo to the east station"), not as instructions.
 - Save state: a separate test save; never the player's real saves.
-- Write the session file `docs/evidence/<milestone>/playtest-<date>-<tester>.md`
-  from the form below. Give the user the observer script.
+- Write the session file `docs/playtests/<date>-<tester>.md` from the form below.
+  Give the designer the observer script.
 
 ## Observer script
 
@@ -37,10 +32,11 @@ Completed: yes / no / with help · Time: …
 Interventions: …
 After play: What was the game about? What was hardest? What did you want to do
 that you couldn't? Would you play another round, and why?
-Observer verdict (user only): accepted / not yet — reasons
+Designer's verdict (designer only): accepted / not yet — reasons
 ```
 
 ## After
 
-Summarize findings as defects or questions linked to the contract criteria. The
-tester's opinions are data; the user's verdict is the acceptance decision.
+Compare findings with the pillars and each mechanic's "Player should feel" line.
+Turn defects into tickets and open questions into items for the designer. The
+tester's opinions are data; the designer's verdict is the acceptance decision.

@@ -30,7 +30,7 @@ There, and for larger mutations, save the JSON in an ignored work file and pass
 `--params-file <absolute-file>`. Operations may execute project initialization or
 tool code; inspection is not a security sandbox.
 
-## G0: import, parse, launch smoke
+## Build: import, parse, launch smoke
 
 ```powershell
 & $godot --headless --path $project --editor --import --quit
@@ -38,7 +38,7 @@ tool code; inspection is not a security sandbox.
 & $python "$skill/scripts/debug/run_project.py" $project 'res://main.tscn' --godot-bin $godot --quit-after 120 --timeout 60 --pretty
 ```
 
-## G1: direct tests
+## Rules: direct tests
 
 ```powershell
 & $godot --headless --path $project --script res://tests/test_<system>.gd
@@ -47,7 +47,7 @@ tool code; inspection is not a security sandbox.
 Exit code 0 means pass. See the test pattern in [game architecture](game-architecture.md).
 If the project adopts GUT or GdUnit4, `scripts/test/run_tests.py` detects and runs it.
 
-## G2 and captures: scenarios
+## Scenarios and screenshots
 
 ```powershell
 & $python "$skill/scripts/debug/run_scenario.py" $project "$project\tests\scenarios\S1.json" --godot-bin $godot --pretty
@@ -55,17 +55,17 @@ If the project adopts GUT or GdUnit4, `scripts/test/run_tests.py` detects and ru
 
 A scenario with a `screenshot` step runs rendered; without one it runs headless.
 Read both the scenario result and its runtime diagnostics. Screenshot paths must
-be absolute or `res://`/`user://`; write evidence captures under
-`docs/evidence/<milestone>/<run_id>/captures/`.
+be absolute or `res://`/`user://`; write build screenshots under
+`docs/captures/<build>/`.
 
 ## Motion: Movie Maker frame sequences
 
 ```powershell
-& $godot --path $project --write-movie "$project\work\movie\R2\frame.png" --fixed-fps 30 --resolution 1280x720 --quit-after 150 res://tests/scenarios/s2_scene.tscn
+& $godot --path $project --write-movie "$project\work\movie\<short-name>\frame.png" --fixed-fps 30 --resolution 1280x720 --quit-after 150 res://tests/scenarios/s2_scene.tscn
 ```
 
 A `.png` path writes a numbered PNG sequence (plus WAV audio); `.avi` writes MJPEG
 video. `--quit-after` counts frames. Copy a handful of representative frames into
-the evidence captures folder for the Art Director; keep the full sequence in
+the build's screenshots folder for the Director; keep the full sequence in
 ignored `work/` and record its hash. Movie Maker renders at fixed time steps, so
 it suits deterministic scenes driven by scripted input, not live play.

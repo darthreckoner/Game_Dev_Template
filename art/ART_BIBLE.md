@@ -1,13 +1,13 @@
 # Art bible
 
-Owned by the Art Director; every direction here is a choice the user approved.
-Proposals live in art-direction reviews until approved. Keep it short enough to
-read before any review.
+Owned by the Director as Art Director; every direction here is a choice the
+designer approved. Proposals live in reviews until approved. Keep it short enough
+to read before any review.
 
 ## Status
 
 Placeholder phase: no visual direction chosen. Until then, apply only the
-readability rules below and the current milestone contract.
+readability rules below and the current build prompt or ticket.
 
 ## Readability rules (apply in every phase)
 

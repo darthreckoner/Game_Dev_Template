@@ -1,7 +1,8 @@
 # Asset service configuration
 
-Enable a service only after the user approves it in `PROJECT.md` (tool budget).
-The Art Director (Claude) uses these; the orchestrator does not need them.
+Enable a service only after the user approves it in the Project settings of
+`DESIGN.md` (tool budget). The Director (Claude) uses these for art; the coder
+does not need them.
 
 ## Claude Code
 
@@ -18,5 +19,6 @@ vendor's official README at install time and verify it with one small request:
 - Meshy: <https://github.com/meshy-dev/meshy-mcp-server>
 - Retro Diffusion: hosted MCP; see <https://retrodiffusion.ai/>
 
-After enabling a service, record in `PROJECT.md` the plan tier and its commercial
-terms, and log every generated asset in `assets/ASSET_SOURCES.md`.
+After enabling a service, record the plan tier and its commercial terms in the
+Project settings of `DESIGN.md`, and log every generated asset in
+`assets/ASSET_SOURCES.md`.

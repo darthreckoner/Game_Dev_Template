@@ -1,8 +1,9 @@
 # Game architecture defaults
 
 Defaults for new Godot projects and systems in this template. They exist to make
-rules testable without rendering and presentation reviewable from captures. Depart
-from them when the game's needs differ; record the reason in PROJECT.md.
+rules testable without rendering, feel tunable without touching rules, and
+presentation reviewable from screenshots. Depart from them when the game's needs
+differ; record the reason under Assumptions in STATE.md.
 
 ## Simulation core, presentation shell
 
@@ -17,10 +18,20 @@ from them when the game's needs differ; record the reason in PROJECT.md.
 - Scenes present the state and forward player intent as commands to the
   simulation ("call down, signal up"). Scenes may interpolate visually between
   simulation steps but must not own rule state.
-- Keep tuning values in data (`.tres` resources or JSON under `data/`), not
-  scattered constants.
 - Use autoloads sparingly: one for the game session is common; avoid global
   mutable state elsewhere. Prefer typed GDScript and treat warnings as defects.
+
+## Tuning, juice, and debug hotkeys
+
+- Keep every tunable number in one tuning file (a `.tres` resource or JSON under
+  `data/`, such as `data/tuning.tres`), not in scattered constants. The designer
+  should be able to change feel there without reading code.
+- The simulation emits events (typed signals) for each player action and outcome,
+  including near-misses. A separate juice layer of nodes listens and plays tweens,
+  particles, screen shake, and sound hooks. Rules never call effects directly, so
+  feel can change without touching rules or tests. See [tweens](tween.md).
+- Add the build prompt's debug hotkeys (spawn a state, speed up time, toggle an
+  overlay of key values) behind a debug flag that exports turn off.
 
 ## Scenarios
 
@@ -30,10 +41,10 @@ of commands with the step or time they occur, and expected outcomes. Keep them i
 
 1. **Headless simulation only** for rules tests (fast, no scene).
 2. **Headless with scenes** through the scenario runner for wiring checks.
-3. **Rendered** for review-moment screenshots and Movie Maker sequences.
+3. **Rendered** for named-moment screenshots and Movie Maker sequences.
 
-Name review moments to match the milestone contract (`R1`, `R2`, …) and capture
-them at the contract's resolution and UI scale.
+Name screenshots to match the build prompt or ticket and capture them at its
+resolution and UI scale.
 
 ## Direct GDScript tests (no framework)
 
@@ -62,7 +73,7 @@ func run() -> void:
 		print("ROUTES_FAIL checks=", checks, " failures=", failures); quit(1)
 ```
 
-Expected values come from the contract or an independent worked example, not from
+Expected values come from the design or an independent worked example, not from
 running the implementation. Add GUT or GdUnit4 only if the user chooses to.
 
 ## Saves and isolation
@@ -73,6 +84,6 @@ project identity. Reset tests prove the state is actually cleared, not just hidd
 
 ## Performance checks
 
-When a contract sets a budget, measure a fixed rendered scenario after warm-up
+When the build prompt sets a budget, measure a fixed rendered scenario after warm-up
 with the scenario runner's performance assertions, on the stated device, with no
 other builds running. Record renderer, resolution, and hardware.

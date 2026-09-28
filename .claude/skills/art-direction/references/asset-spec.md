@@ -5,7 +5,7 @@
 ```markdown
 # <asset name>
 Status: draft | approved (<who>, <date>) | delivered
-Used in: <scene/system> · Milestone: M<n>
+Used in: <scene/system> · Build or ticket: <v1 / T-###>
 Purpose: what the player must read from it
 Form: sprite | sprite sheet | tileset | 3D mesh | UI | audio
 Size: <px or units>; pixel/texel density: <…>; camera distance: <…>
@@ -19,10 +19,10 @@ Placeholder allowed: yes/no
 
 ## Provider notes
 
-Use a service only when `PROJECT.md` lists it in the tool budget. Record every
-result in `assets/ASSET_SOURCES.md`, including the plan tier's terms at generation
-time. Service capabilities change often; check current docs before relying on
-these notes.
+Use a service only when the Project settings in `DESIGN.md` list it in the tool
+budget. Record every result in `assets/ASSET_SOURCES.md`, including the plan
+tier's terms at generation time. Service capabilities change often; check current
+docs before relying on these notes.
 
 - **Placeholders:** simple shapes drawn in-engine or as small PNGs. Free and
   deterministic; prefer them until a direction is approved.

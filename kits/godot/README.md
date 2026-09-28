@@ -37,7 +37,7 @@ Set-Content -Path $params -Encoding ascii -Value '{"op":"inspect_scene"}'
 
 A JSON help listing confirms the helpers run. This was verified on 2026-09-25 on a
 scratch project under Windows PowerShell 5.1; the params file avoids 5.1's quoting
-problem. Before the first evidence run, also run one scenario with a screenshot
+problem. Before the first `$build-check`, also run one scenario with a screenshot
 step and look at the image.
 
 ## Contents

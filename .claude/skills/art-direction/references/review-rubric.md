@@ -1,16 +1,16 @@
 # Review rubric
 
-## Anchored scale (same as the evidence gates)
+## Anchored scale
 
-- **0 Missing:** the expected element or state is not present in the capture.
+- **0 Missing:** the expected element or state is not present in the screenshot.
 - **1 Unusable:** present, but a player would misread it or fail because of it.
 - **2 Confusing:** works, but with substantial hesitation or ambiguity.
-- **3 Meets:** meets this milestone's stated expectation.
-- **4 Exceeds:** clearly better than the milestone needs.
+- **3 Meets:** meets what this build set out to show.
+- **4 Exceeds:** clearly better than this build needs.
 
 Calibrate before scoring: in the first review for a project, write one sentence
 for what a 2, a 3, and a 4 would look like for each moment. Reuse and refine those
-anchors in later reviews so scores stay comparable across rounds.
+anchors in later reviews so scores stay comparable across builds.
 
 ## Lenses (use those the moment calls for)
 
@@ -21,24 +21,25 @@ anchors in later reviews so scores stay comparable across rounds.
   by hue alone anywhere (a colour-blind risk)?
 - **Silhouette and scale:** are types distinguishable by shape? Is scale consistent?
 - **Feedback:** does each important action or state change have a visible response?
-- **Consistency:** does the moment follow the art bible and match earlier approved
-  captures?
+- **Consistency:** does the moment follow the art bible and match earlier
+  screenshots the designer approved?
 - **UI:** legibility at target resolution, alignment, grouping, and whether UI
   obscures play.
 
 ## Severity
 
-- **Blocker:** a player would fail or misunderstand a core action; blocks a pass.
+- **Blocker:** a player would fail or misunderstand a core action; fix before the
+  next play session.
 - **Major:** substantial confusion or a clear art-bible violation.
 - **Minor:** noticeable but does not affect understanding.
-- **Polish:** improvement beyond this milestone's expectation.
+- **Polish:** improvement beyond what this build needs.
 
 ## Finding format
 
 ```markdown
-### AD-004-F1 · major · R2-curve-follow.png
+### F1 · major · curve-follow.png
 Observed: the last two cars overlap the track edge on the inner curve.
-Why it matters: reads as derailment; contract C3 expects cars to follow the route.
+Why it matters: reads as derailment; DESIGN.md says cars follow the route.
 Direction: cars should stay centered on the rail line through the curve; if art
 changes are needed later, shorter car sprites would reduce overhang.
 Confidence: medium — one still; a 5-frame sequence would confirm.
