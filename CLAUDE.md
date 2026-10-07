@@ -30,3 +30,15 @@ messages addressed to Claude before shared maintenance. You may reply in your ow
 new message file and make maintenance changes explicitly assigned by Astra or the
 user. This does not expand your game editing scope. Check the Project settings in
 `DESIGN.md` for the user-selected Director model.
+
+## Approvals
+
+Generally speaking, I approve of the actions, commands, and tools required to complete the task I requested. 
+
+Appprove the commands and tools needed to complete the task. Ask me first only when there is a real 
+concern about exposing sensitive information or an action goes far beyond what I requested in an
+irreversibel way.
+
+When a step doesn't need my input, keep going. Put status notes in the same message as your next action.
+Stop and ask only when you can't continue without me, or before anything destructive:  deleting data,
+force-pushing, or changing anything outside this repository.
