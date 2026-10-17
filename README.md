@@ -78,6 +78,7 @@ designer's play does.
 | `docs/tickets/` | One file per change for the coder, copied from `TEMPLATE.md` |
 | `docs/captures/`, `docs/reviews/`, `docs/playtests/` | Build screenshots, Director reviews, play sessions; created on first use |
 | `.claude/skills/` | Director skills (`game-director`, `art-direction`, `retro`) and coder skills (`build-check`, `context-maintenance`, `token-waste`) |
+| `.claude/settings.json` | Claude Code project settings every game inherits: auto memory off, so the files above are the only continuity |
 | `art/ART_BIBLE.md`, `art/references/` | Approved visual direction, look checklist, and the reference images you chose |
 | `assets/ASSET_SOURCES.md` | Provenance and permissions for every asset |
 | `docs/process/ASSUMPTIONS.md` | Why each process step exists; reviewed at retros |
