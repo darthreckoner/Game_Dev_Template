@@ -38,9 +38,10 @@ tests, and named-moment screenshots.
 
 ## Build checks
 
-For `$build-check`, use direct tests for rules, `scripts/debug/run_scenario.py`
-for scenario assertions and screenshots, and Movie Maker PNG sequences for motion
-and juice. Commands are in [Windows commands](references/windows.md).
+For the build check (`/build-check` in Claude Code, `$build-check` in Codex), use
+direct tests for rules, `scripts/debug/run_scenario.py` for scenario assertions,
+UI reports, and screenshots, and Movie Maker PNG sequences for motion and juice.
+Commands are in [Windows commands](references/windows.md).
 
 ## Save and scope boundaries
 

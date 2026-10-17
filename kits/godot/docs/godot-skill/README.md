@@ -3,7 +3,10 @@
 This project-local skill adapts [haxqer/godot-skill](https://github.com/haxqer/godot-skill),
 pinned to `1aec6d436f6a35044fe2f269637a339c2b8749b4`. The upstream MIT license is
 retained in the skill folder. [upstream.json](upstream.json) records the upstream
-archive SHA-256 and every upstream payload file hash.
+archive SHA-256 and every upstream payload file hash. Against that record, the
+files that differ from upstream are `SKILL.md`, `agents/openai.yaml`, and
+`scripts/debug/run_project.py`; everything else is byte-identical (checked
+2026-10-16).
 
 ## Lineage
 
@@ -25,21 +28,29 @@ archive SHA-256 and every upstream payload file hash.
    - `references/windows.md` generalized to placeholder project paths; added
      G0/G1/G2 command groups and Movie Maker frame-sequence capture.
    - Added `references/game-architecture.md`.
-   Scripts, other references, and templates are byte-identical to the Rust Bucket
-   installation. Kit check (2026-09-25, Windows PowerShell 5.1, Godot 4.7.2): the
-   dispatcher `help` operation ran on a scratch project with `--params-file`; the
-   inline `--params` form failed there because 5.1 strips JSON quotes. Scenario,
-   capture, and Movie Maker commands were not rerun; each project verifies them
-   once at install (see the kit README).
+   Kit check (2026-09-25, Windows PowerShell 5.1, Godot 4.7.2): the dispatcher
+   `help` operation ran on a scratch project with `--params-file`; the inline
+   `--params` form failed there because 5.1 strips JSON quotes.
 3. **Game-director workflow (2026-09-28).** Documentation-only changes for the
    template's switch from milestone contracts and evidence runs to one-shot
-   builds, tickets, and `$build-check`:
+   builds, tickets, and the build check:
    - `SKILL.md`: evidence-run pointers replaced with build-check pointers.
    - `references/windows.md`: command groups renamed (build, rules, scenarios);
      screenshots go to `docs/captures/<build>/`.
    - `references/game-architecture.md`: added tuning file, event-driven juice
      layer, and debug hotkeys; contract references now point to the build prompt.
-   Scripts are unchanged and no commands were rerun.
+   Scripts unchanged; no commands rerun.
+4. **Claude-first template (2026-10-16).** Documentation-only changes:
+   - Install path is now `.claude/skills/godot/`, because Claude Code discovers
+     project skills there only (its docs, checked 2026-10-16). Codex gets a mirror
+     through `tools/sync-codex-skills.ps1`. `references/windows.md` sets `$skill`
+     accordingly; `SKILL.md` names `/build-check` and `$build-check`.
+   - Kit check rerun on a scratch project (Godot 4.7.2, Python 3.14.7, run
+     directly from Python): dispatcher `help` with `--params-file`, and a
+     rendered scenario with a `ui_report` step and a `screenshot` step with
+     `expect.not_blank`. Both passed and the PNG showed the scene's label. The
+     scenario is kept as `kits/godot/examples/boot-scenario.json`. Movie Maker
+     was not rerun. Scripts unchanged.
 
 ## Updating
 
@@ -47,6 +58,6 @@ archive SHA-256 and every upstream payload file hash.
 2. Compare its payload with `upstream.json` and inspect upstream changes.
 3. Reapply only local changes still needed. Preserve the MIT license and record the
    new revision, archive hash, and file hashes.
-4. Rerun the Rust Bucket-style checks: runtime regression tests for the patched
-   scripts, an isolated scenario with a screenshot, and the skill validator.
+4. Rerun the checks above: runtime regression tests for the patched scripts, the
+   example scenario with its screenshot, and the skill validator.
 5. Update this record in the template, then in projects that adopt the update.

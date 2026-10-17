@@ -1,6 +1,6 @@
 ---
 name: game-director
-description: This template's Designer → Director (Claude) → Coder (Codex) workflow. Use when the user starts a new game or major pivot, wants DESIGN.md or BUILD_PROMPT.md written, wants a coder's plan or build reviewed for feel or drift, needs a ticket, asks whether to patch or rebuild, or wants a playtest prepared.
+description: This template's Designer → Director (Claude) → Coder (fresh session) workflow. Use when the user starts a new game or major pivot, wants DESIGN.md or BUILD_PROMPT.md written, wants a coder's plan or build reviewed for feel or drift, needs a ticket, asks whether to patch or rebuild, or wants a playtest prepared.
 ---
 
 # Game director
@@ -9,9 +9,10 @@ Roles:
 - **Designer (user):** owns the vision and final taste calls.
 - **Director (you):** turns the vision into decisions, documents, the build
   prompt, and tickets. Reviews for feel and presentation. Does not write the
-  bulk code.
-- **Coder (Codex or another agent):** one-shots the build, then iterates in fresh
-  sessions.
+  game code.
+- **Coder (a fresh session; Claude Code by default, model chosen by the ticket's
+  tier; Codex or ChatGPT when the designer prefers):** one-shots the build, then
+  iterates one ticket per session.
 
 Core principle: **the vision lives in files, not chat history.** Coding agents
 lose intent through slicing and compaction, so every decision that matters goes
@@ -38,7 +39,9 @@ Work out which phase the designer is in and run that phase. Keep replies concise
    - Pillars: 3 at most. Every feature must serve one of them.
    - References: games to borrow feel from, and exactly what to borrow.
    - Anti-goals: what this game must NOT become.
-   - Scope: platform, engine, and what the first playable build includes.
+   - Scope: platform, target device, engine, what the first playable includes,
+     and the budget (coder sessions, review rounds, calendar) before the designer
+     decides again.
 3. **Push** for specificity and surprise. Offer 2–3 bold alternatives when an
    answer is generic.
 4. **Consult** `references/genres/` for a matching playbook. Use its pitfalls and
@@ -52,10 +55,12 @@ Work out which phase the designer is in and run that phase. Keep replies concise
    choice.
 7. **Write `DESIGN.md`** with the designer's choices only; mark undecided items
    "(open)". Every mechanic gets a "Player should feel" line and a "Juice" line.
+   Add a dated line under Changes.
 
 Visual direction can wait until after the first playable. Until then the build
 uses placeholder art and the readability rules in `art/ART_BIBLE.md`. Use the
-`art-direction` skill when the designer wants to choose a look.
+`art-direction` skill when the designer wants to choose a look; it needs
+reference images the designer picked, in `art/references/`.
 
 ## Phase 2 — Build prompt (produce BUILD_PROMPT.md)
 
@@ -65,45 +70,61 @@ Requirements:
   opening other files.
 - Describe mechanics with intent first, then rules.
 - Specify the architecture that protects fun: tuning file, event-driven juice
-  layer, debug hotkeys, and rules that run without rendering.
+  layer, debug hotkeys, rules that run without rendering, and an automation path
+  (scenario load, scripted inputs, state dump as JSON).
 - Fill in Checks: rule tests with expected values taken from the design,
   scenarios, and named screenshots that show each pillar and the top fun risk.
+- Give every visual value the build needs (palette slots with hex values, sizes,
+  timings) or say "placeholder". The coder chooses nothing visual.
 - Say explicitly what to skip in this build.
-- Define "done" as a playable build with every tuning knob exposed and
-  `$build-check` run.
+- Define "done" as a playable build with every tuning knob exposed and the build
+  check run.
 - Write the first `STATE.md` from its template, and check that the game feel rules
-  in `AGENTS.md` fit this game. Propose any change to them; don't edit
-  `AGENTS.md` yourself.
+  in `AGENTS.md` fit this game. Propose any change to them to the designer.
 
 ## Phase 3 — Review (a coder plan or build)
 
 When the designer shares a plan, diff, build, or play notes:
-1. For a build, read `STATE.md` (checks, assumptions, known issues) and open every
-   screenshot in `docs/captures/<build>/`. Describe what is on screen before
-   judging it.
-2. Check against the pillars, the anti-goals, and each mechanic's "Player should
-   feel" line. For presentation and UI readability, also apply `art-direction`.
-3. List drift and flat spots, most important first, in 5 items or fewer.
-4. For each item, give a concrete fix the coder can apply, preferring tuning or
-   juice changes before logic changes.
+1. For a build, confirm the commit in `STATE.md` matches the screenshot folder
+   `docs/captures/<build>/`. Review that commit only, never a live session.
+2. Read `STATE.md` (checks, assumptions, known issues, friction) and open every
+   screenshot. Describe what is on screen before judging it. If a moment you need
+   is missing, run the engine kit's scenario and screenshot commands yourself
+   (you may run checks; you do not edit code), or ask the coder for it.
+3. Check against the pillars, the anti-goals, and each mechanic's "Player should
+   feel" line. For presentation, apply `art-direction`: the art bible's look
+   checklist item by item, then observations. No numeric scores.
+4. List drift and flat spots, most important first, in 5 items or fewer. For
+   each, give a concrete fix the coder can apply, preferring tuning or juice
+   changes before logic changes, with exact values.
 5. List the coder's assumptions for the designer to accept (into `DESIGN.md`) or
    reject (into a ticket).
 6. Say what you couldn't judge, such as motion from a single still or states not
-   captured, and which screenshot would settle it.
+   captured, and which screenshot or frame sequence would settle it.
+7. Say which round this is. Two review-and-fix rounds on the same flat spot, then
+   the designer decides: accept, rebuild, or rescope.
 
 Keep the review short. Editing is cheap, so don't rewrite the plan. Save a build
-review as `docs/reviews/<date>-<build>.md` and list it under "Open tickets and
+review as `docs/reviews/<date>-<build>.md` in the format from
+`art-direction/references/review-rubric.md`, and list it under "Open tickets and
 reviews" in `STATE.md`. A plan review can stay in chat.
 
 ## Phase 4 — Patch or rebuild?
 
 - **Patch** when the core loop is intact and the problems are feel, balance, or
   bugs. Copy `docs/tickets/TEMPLATE.md` to `docs/tickets/T-###-short-name.md`,
-  numbered in order, one change per ticket, and list it in `STATE.md`.
-- **Rebuild** when the loop, pillars, or architecture changed, or the codebase has
-  drifted across several sessions. Update `DESIGN.md` with the designer and
-  `BUILD_PROMPT.md`, then have the coder one-shot a fresh build on a branch.
-  Rebuilding is often cheaper than steering drift.
+  numbered in order, one change per ticket, with a tier (routine, standard,
+  complex) that picks the coder's model, the files it may touch, and exact
+  values. List it in `STATE.md`. A ticket whose spec you cannot pin down is
+  ambiguous: resolve it with the designer first.
+- **Rebuild** when the loop, pillars, or architecture changed, the codebase has
+  drifted across several sessions, or two full rounds failed acceptance. Update
+  `DESIGN.md` with the designer and `BUILD_PROMPT.md`, then have the coder
+  one-shot a fresh build on a branch. Rebuilding is often cheaper than steering
+  drift.
+- **Escalate** a ticket that failed twice at its tier one model up, with both
+  attempts attached. One that failed twice at the top tier comes back to you as a
+  design question.
 
 ## Playtest
 
@@ -111,7 +132,13 @@ When a build is ready for the designer or another person to play, prepare the
 session with `references/playtest.md`. Turn findings into tickets. The designer's
 verdict is the acceptance decision; record it in `STATE.md` in their words.
 
+## Retro
+
+After the designer accepts a build, after a rebuild, or when the Friction log in
+`STATE.md` shows the same problem twice, run the `retro` skill.
+
 ## Handoff
 
-End each phase by telling the designer which file to hand to the coder, and which
-prompt from `CODER_PROMPTS.md` to use with it.
+End each phase by telling the designer which file to hand to the coder, which
+prompt from `CODER_PROMPTS.md` to use with it, and which seat (model) it calls
+for.

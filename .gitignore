@@ -22,7 +22,7 @@ Desktop.ini
 # Agent-local settings
 .claude/settings.local.json
 
-# Local scratch work, logs, and large recordings
+# Local scratch work, logs, and large recordings (full frame sequences, movies)
 .cache/
 *.log
 __pycache__/
@@ -33,9 +33,3 @@ __pycache__/
 
 # Add generated files for the chosen engine during kit installation.
 # Do not ignore source assets, build screenshots, or lockfiles by default.
-
-# Local source-template coordination; exclude from derived games
-/.coordination/
-
-# Superseded local correspondence retained outside published starter content
-/docs/process/2026-09-25-claude-to-astra-tool-library.md

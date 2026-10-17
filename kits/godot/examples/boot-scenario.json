@@ -1,0 +1,13 @@
+{
+  "scene_path": "main.tscn",
+  "viewport_size": {"width": 640, "height": 360},
+  "settle_frames": 2,
+  "steps": [
+    {"type": "wait_frames", "frames": 2},
+    {"type": "ui_report", "label": "boot"},
+    {"type": "screenshot", "path": "C:/Dev/<Project>/docs/captures/smoke/boot.png", "expect": {"not_blank": true}}
+  ],
+  "assertions": [
+    {"assertion": "node_exists", "node_path": "Label"}
+  ]
+}

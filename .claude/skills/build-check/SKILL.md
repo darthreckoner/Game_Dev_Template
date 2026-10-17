@@ -12,10 +12,13 @@ decides that. Do not fix anything mid-check; fix afterwards and check again.
 ## Run
 
 1. **Commit** the build as a local checkpoint so results point at an exact
-   version. Record the commit and engine version in `STATE.md`.
+   version. Record the commit, engine version, and your seat (model) in
+   `STATE.md`.
 2. **Build:** import, parse, and launch smoke. Read the error log; new errors are
    failures.
-3. **Rules:** run the automated tests. Record counts and every failure.
+3. **Rules:** run the automated tests. Record counts and every failure. Expected
+   values must come from the design or an independent example; a test that
+   asserts whatever the code produced checks nothing.
 4. **Scenarios:** run each scenario from `BUILD_PROMPT.md` or the ticket with its
    seed and scripted inputs, and assert the expected state. Read runtime
    diagnostics too; passing assertions can hide unrelated script errors.
@@ -25,14 +28,21 @@ decides that. Do not fix anything mid-check; fix afterwards and check again.
    stills; the Director cannot watch video. Keep full sequences in ignored
    `work/`. Look at every image yourself to catch empty or wrong frames.
 
-The engine kit's skill (for example `$godot`) has the test, scenario, and capture
+The engine kit's skill (for example `godot`) has the test, scenario, and capture
 commands.
 
 ## Record
 
 Update `STATE.md`: the Checks section (results, failures, the screenshots folder,
 what could not be checked and why), then what exists, assumptions, known issues,
-and next steps. For a ticket, set its status to done with the commit.
+friction (any command that failed or tool that misbehaved during the check), and
+next steps. For a ticket, set its status to done with the commit.
 
 Never weaken or skip a failing check to get a pass. A failure is a known issue in
 `STATE.md`, not something to hide.
+
+## Report
+
+End with: what changed, what was checked and the results, what is unverified and
+why, assumptions made, and the exact delivery state (commit, branch, pushed or
+not).

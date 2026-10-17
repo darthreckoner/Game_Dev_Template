@@ -2,15 +2,17 @@
 
 The one continuity file. The Director writes the first version; the coder updates
 it in place at the end of every session. Current state only, at most 8,000
-characters; history lives in Git.
+characters; history lives in Git. The Director edits only "Open tickets and
+reviews", "Friction log", and "Designer's verdict".
 
 ## Build
-Version: [v1 one-shot / rebuild N] · Commit: [sha] · Engine: [name version]
+Version: [v1 one-shot / rebuild N] · Commit: [sha] · Engine: [name version] ·
+Built by: [seat and model]
 
 ## What exists
 -
 
-## Checks (last `$build-check`)
+## Checks (last build-check)
 - Rule tests:
 - Scenarios:
 - Screenshots: `docs/captures/[build]/`
@@ -23,6 +25,11 @@ Version: [v1 one-shot / rebuild N] · Commit: [sha] · Engine: [name version]
 -
 
 ## Open tickets and reviews
+-
+
+## Friction log
+One line each, as it happens: a failed command, a correction from the designer,
+a tool that misbehaved, a ticket that changed nothing. Pruned at each retro.
 -
 
 ## Next steps

@@ -6,7 +6,7 @@ execution-policy change is needed.
 
 ```powershell
 $project = 'C:\Dev\<Project>'
-$skill = Join-Path $project '.agents\skills\godot'
+$skill = Join-Path $project '.claude\skills\godot'
 $godot = 'C:\Program Files\Godot 4\Godot_v4.7.2-stable_win64_console.exe'
 $python = 'C:\Program Files\Python\Python314\python.exe'
 & $godot --version
@@ -14,6 +14,8 @@ $python = 'C:\Program Files\Python\Python314\python.exe'
 ```
 
 Use the `_console` executable for automation so output reaches the terminal.
+A Codex session uses `.agents\skills\godot` instead, after
+`tools/sync-codex-skills.ps1` mirrored the skill there.
 
 ## Dispatcher
 
@@ -56,7 +58,10 @@ If the project adopts GUT or GdUnit4, `scripts/test/run_tests.py` detects and ru
 A scenario with a `screenshot` step runs rendered; without one it runs headless.
 Read both the scenario result and its runtime diagnostics. Screenshot paths must
 be absolute or `res://`/`user://`; write build screenshots under
-`docs/captures/<build>/`.
+`docs/captures/<build>/`. A `ui_report` step lists every visible control's rect
+and catches stacked or offscreen UI without an image; a `screenshot` step with
+`"expect": {"not_blank": true}` fails the run when nothing was drawn. The kit's
+`examples/boot-scenario.json` is a known-good smoke scenario (verified 2026-10-16).
 
 ## Motion: Movie Maker frame sequences
 

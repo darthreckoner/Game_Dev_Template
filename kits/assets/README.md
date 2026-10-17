@@ -4,6 +4,12 @@ Enable a service only after the user approves it in the Project settings of
 `DESIGN.md` (tool budget). The Director (Claude) uses these for art; the coder
 does not need them.
 
+## Hand-run generation (no configuration)
+
+The designer may generate images in ChatGPT or any image tool and drop the files
+into `assets/`. That needs no entry here; it needs a spec in `art/specs/` first
+and a row in `assets/ASSET_SOURCES.md` with the model, prompt, date, and terms.
+
 ## Claude Code
 
 Copy the entries you need from `mcp.example.json` into the project's `.mcp.json`.
