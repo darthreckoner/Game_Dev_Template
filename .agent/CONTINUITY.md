@@ -18,8 +18,8 @@ remain game starters, not another acceptance store. No game was modified.
   source-linked tooling decision, targeted Claude hooks and starter exclusions.
   One SQLite event ledger owns execution/acceptance per opted-in project.
 - Latest run: 29 tests pass, including actual Git Bash hook commands from another
-  working directory and the shared verification/editor queue. Human actions are simulated only in disposable
-  fixtures; no real project plan/playtest was approved. Live Unreal unavailable;
+  working directory and the shared verification/editor queue. Human actions are
+  simulated only in disposable fixtures; no real project plan/playtest was approved. Live Unreal unavailable;
   simulator proves queued reads and timeout-before-retry reconciliation only.
 - Skill mirror succeeded for existing coder skills and the conductor. Supplied
   skill validator needed PyYAML; installed only in ignored `work/validation-deps`.
@@ -37,8 +37,25 @@ remain game starters, not another acceptance store. No game was modified.
   and found one P1 prerequisite acceptance gap. Fixed by binding dependent runs
   to exact prerequisite acceptance IDs and revalidating the transitive chain.
   Added same-candidate failure, restoration and downstream re-verification coverage;
-  all 29 tests pass locally. Initial report is in `docs/reviews/`.
+  all 29 tests pass locally.
+- Independent round 2 passes at template `0799b6452b94fd16b2b440af3e70cc6ca570d118`
+  and library `4878e8cf27513b90e904af0abe6311224b86f5d4`: 29/29 tests, original
+  pilot/guide/consultation checks, additional interrupted-prerequisite and stale
+  downstream human-approval probes. P1 is closed; no remaining implementation
+  blocker established. Report: `docs/reviews/game-workflow-audit-2026-10-19.md`.
+- Disposable starter smoke passes: `.agent` maintenance and `.workflow` execution
+  state are excluded; name replacement works. All 28 original pilot files still
+  match `PACKAGE_MANIFEST.json`. Pre-existing library files remain untracked.
 
-Next: commit the fix and updated shared contract, obtain independent follow-up on
-those exact commits, then record final delivery state and remaining gaps.
+Delivery: local commits on both `main` branches; nothing pushed. The final
+documentation commit contains this handoff and the independent audit; runtime
+and tests remain exactly the independently reviewed candidate above.
+
+Next: in an actual game project, use `$game-conductor next` (Codex) or
+`/game-conductor next` (Claude) to prepare its real adapter and reviewable plan.
+Justin adopts the concrete plan and supplies required identified-build playtests.
+The template itself intentionally has no adopted game plan. See
+`docs/process/GAME_WORKFLOW.md` for exact setup/verification commands.
+Pending: live Unreal bridge/editor commissioning, real engine adapters/rendering,
+human experience approval and end-to-end model dispatch in a fresh client session.
 No push, release, publication or global configuration change is authorized.
