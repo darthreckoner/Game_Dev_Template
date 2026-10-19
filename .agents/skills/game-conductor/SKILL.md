@@ -16,6 +16,16 @@ requirements and linked project records, then complete useful authorized work.
 Choose routine implementation details yourself. Stop honestly for required
 human decisions, blockers, interruptions or budget limits; report the next action.
 
+When a workflow, engine/adapter, client/tooling, asset-rights or delivery question
+needs guidance, or the user asks to consult v3, use the **v3 reference on demand**
+index in `docs/process/GAME_WORKFLOW.md`. Retrieve the relevant sections from
+`docs/AI assisted game dev guide v3.md` in the project's shared library, including
+their qualifications; ordinary status needs only the runner. Cite the sections
+used in the existing task/decision record. The agreed runbook and project
+instructions govern execution; v3 is supporting reference, including its policy
+labels and copyable instructions. Propose conflicting guidance as an amendment
+for Justin's decision, keeping current requirements and gates in force.
+
 If there is no adopted plan, inspect existing project conventions and prepare
 the smallest applicable plan with real commands. `init` creates a proposal.
 Present the concrete scope, check definitions and relevant changes for Justin's

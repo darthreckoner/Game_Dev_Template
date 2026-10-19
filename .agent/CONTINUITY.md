@@ -59,3 +59,29 @@ The template itself intentionally has no adopted game plan. See
 Pending: live Unreal bridge/editor commissioning, real engine adapters/rendering,
 human experience approval and end-to-end model dispatch in a fresh client session.
 No push, release, publication or global configuration change is authorized.
+
+## v3 reference follow-up — 2026-10-19
+
+Justin authorized on-demand v3 consultation while retaining runbook authority.
+The conductor now routes relevant workflow/engine/tool/asset/delivery questions
+and explicit v3 requests through `docs/process/GAME_WORKFLOW.md`'s 13-topic
+index. Read original sections and qualifications, cite them in existing records,
+and keep source-dependent questions unresolved if the guide is unavailable.
+Routine status uses the runner. Conflicts remain proposed amendments; v3 policy
+labels, snippets and examples do not change adopted scope, checks or human gates.
+
+Source skill and Codex mirror match; both pass skill validation. Every indexed
+heading resolves outside code fences. The original v3 SHA-256 remains
+`790642b527a86d0a738b186ea765dfa9c3d2da791444adbd2a77abc4c89e7a8e`.
+Validation detail: ignored `work/v3-reference-validation.json`.
+Workflow suite passes 29/29 (42.558 s); pilot validation and all 10 self-tests,
+217-block library validation and `TOOLING-METHOD-001` consultation pass.
+Runner, agreed-definition starter, shared contracts, reference pins, pilot and
+original guide are unchanged. Only template skill/docs/maintenance notes changed;
+the pre-existing library material stays untracked. No new model-dispatch trial
+or live engine commissioning was performed for this documentation update.
+
+Next: use the conductor in a fresh client session for the actual project's next
+step; consult the relevant v3 route when guidance is needed. Existing live-engine
+and human-playtest commissioning items above remain pending. Local checkpoint
+only; nothing pushed.
