@@ -188,6 +188,13 @@ Director as a design question; the spec is probably wrong.
 
 ## Skills
 
+For an adopted workflow, use `game-conductor` for next/status/resume and read
+`docs/process/GAME_WORKFLOW.md`. The gate runner owns acceptance; build-check
+and `STATE.md` supply evidence and handoff links. Required human playtest
+approval comes from the designer for the identified candidate. All Unreal MCP
+calls, including reads, run serially through the configured adapter; inspect
+unknown outcomes before retrying.
+
 All skills live in `.claude/skills/`, where Claude Code finds them:
 
 - Director: `game-director` (design, build prompt, reviews, tickets, playtests),

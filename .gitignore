@@ -31,5 +31,8 @@ __pycache__/
 /tmp/
 /temp/
 
+# Runner-owned execution history and recoverable candidates; preserve on handoff.
+/.workflow/
+
 # Add generated files for the chosen engine during kit installation.
 # Do not ignore source assets, build screenshots, or lockfiles by default.

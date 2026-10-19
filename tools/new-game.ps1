@@ -49,6 +49,8 @@ $Dest = (Resolve-Path -LiteralPath $Dest).Path
 $excludeDirs = @(
     (Join-Path $source '.git'),
     (Join-Path $source 'work'),
+    (Join-Path $source '.agent'),
+    (Join-Path $source '.workflow'),
     (Join-Path $source 'docs\research')
 )
 $excludeFiles = @('new-game.ps1', 'settings.local.json')

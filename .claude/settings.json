@@ -1,3 +1,28 @@
 {
-  "autoMemoryEnabled": false
+  "autoMemoryEnabled": false,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|mcp__.*[Uu][Nn][Rr][Ee][Aa][Ll].*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -B \"$CLAUDE_PROJECT_DIR/tools/game_workflow.py\" --root \"$CLAUDE_PROJECT_DIR\" hook",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -B \"$CLAUDE_PROJECT_DIR/tools/game_workflow.py\" --root \"$CLAUDE_PROJECT_DIR\" hook",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "decision_id": "TOOLING-METHOD-001",
+  "question": "How can the existing book reference support the authorized workflow without competing acceptance state?",
+  "intended_experience": "Support the designer in choosing and testing the intended player experience while keeping routine implementation lightweight. This is a tooling decision, not a new game requirement.",
+  "source_sha256": "e10731fcd0cfc9044a96b26932a4317e851bbef1fc64e0ac621742671268d5d5",
+  "catalog_sha256": "f700fc8ba76ed8c225d602c1d6ba7448a80b409430f9f7026d3b35028ab86496",
+  "principle_ids": [
+    "DG-PROC-05"
+  ],
+  "source_references": [
+    {
+      "principle_id": "DG-PROC-05",
+      "reference": {
+        "source_id": "SYLVESTER-DESIGNING-GAMES-2013",
+        "anchor": "pdf-page-329",
+        "relative_link": "source/designing_games.md#pdf-page-329",
+        "line_start": 12120,
+        "line_end": 12142,
+        "pdf_pages": [
+          329
+        ],
+        "printed_pages": [
+          321
+        ],
+        "role": "organic process and broad strokes",
+        "passage_sha256": "b4146e51b69388769a1b181d3cd3c9b0cad2b97379cd8344730ab73c05987a42"
+      }
+    },
+    {
+      "principle_id": "DG-PROC-05",
+      "reference": {
+        "source_id": "SYLVESTER-DESIGNING-GAMES-2013",
+        "anchor": "pdf-page-374",
+        "relative_link": "source/designing_games.md#pdf-page-374",
+        "line_start": 13774,
+        "line_end": 13788,
+        "pdf_pages": [
+          374
+        ],
+        "printed_pages": [
+          366
+        ],
+        "role": "Chapter16: decision effort proportional to consequence",
+        "passage_sha256": "b9c43bd5885ec5f25a4af11ec200ffddf44b829b3c402227528dbd8e2a0d07c3"
+      }
+    },
+    {
+      "principle_id": "DG-PROC-05",
+      "reference": {
+        "source_id": "SYLVESTER-DESIGNING-GAMES-2013",
+        "anchor": "pdf-page-296",
+        "relative_link": "source/designing_games.md#pdf-page-296",
+        "line_start": 10863,
+        "line_end": 10879,
+        "pdf_pages": [
+          296
+        ],
+        "printed_pages": [
+          288
+        ],
+        "role": "Ch11 qualification: established designs can justify detailed planning",
+        "passage_sha256": "6181515a1ed71a2a332743d47c4ab883d74bdd6f32fb19e34a679cf3f7c5233f"
+      }
+    }
+  ],
+  "applicability": "The catalog explicitly includes book-to-runbook integration. Human observation, QA and source retrieval answer different questions.",
+  "choice": "Reuse the existing pilot catalog and helper for consultation integrity; route current steps through one conductor and acceptance through one runner, as authorized on 2026-10-19.",
+  "tradeoff": "Small local cooperative controls are inspectable and need no service; they cannot authenticate a same-user human or reviewer.",
+  "hypothesis": "Source-linked records and one acceptance owner can preserve source qualifications while rejecting stale or insufficient evidence.",
+  "challenge_observation": "A missing or altered source reference, stale result, omitted required test or absent human decision is accepted, or normal valid completion cannot proceed.",
+  "method": "Validate the untouched pilot; use disposable positive and deliberate-failure fixtures; obtain a fresh independent requirements-and-evidence audit of the saved tooling candidate.",
+  "prototype_limits": "No game, renderer, live Unreal bridge, real player or adversarial identity boundary is commissioned by these fixtures.",
+  "qualifications": "The author supports adaptive knowledge creation and proportionate decision effort; the conductor, schemas, hooks and ledger are our adaptations. Existing mandatory duties stay binding. Established designs may justify detailed planning (printed p. 288); automated QA does not prove enjoyment."
+}

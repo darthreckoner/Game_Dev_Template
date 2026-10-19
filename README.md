@@ -26,6 +26,13 @@ Designer (you) → Director (Claude) → Coder (fresh session, model by ticket t
 
 The seats, tiers, feel rules, and stop rules are in `AGENTS.md`.
 
+For an adopted, source-linked workflow with saved-candidate gates, use the
+[game conductor](docs/process/GAME_WORKFLOW.md): `/game-conductor status` in
+Claude Code or `$game-conductor status` in Codex after skill sync. It integrates
+the shared Designing Games reference without adding a second acceptance owner.
+Setup prepares a project proposal; engine checks and human gates require actual
+project commissioning.
+
 ## Start a project
 
 From PowerShell in this folder:

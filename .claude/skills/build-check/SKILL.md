@@ -9,6 +9,12 @@ Give the Director and designer evidence about one exact build. Checks show that
 rules and wiring work; they do not show the game is fun. Only the designer's play
 decides that. Do not fix anything mid-check; fix afterwards and check again.
 
+When a project has adopted `docs/process/game-runbook.json`, use the
+`game-conductor` skill and `tools/game_workflow.py` to request verification and
+record its run ID. This checklist supplies evidence; the runner owns acceptance.
+Keep required independent audits and Justin's identified-build playtest pending
+until they actually occur. A checkpoint commit or ticket status cannot accept it.
+
 ## Run
 
 1. **Commit** the build as a local checkpoint so results point at an exact

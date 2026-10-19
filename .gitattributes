@@ -1,2 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Stable runner/record bytes across Windows checkouts.
+tools/game_workflow.py text eol=lf
+tools/test_game_workflow.py text eol=lf
+docs/process/game-workflow-decision.json text eol=lf
+.claude/skills/game-conductor/** text eol=lf
+.agents/skills/game-conductor/** text eol=lf
