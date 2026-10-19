@@ -341,15 +341,28 @@ class Workflow:
         require(runs, "No verification requested for this step")
         return runs[-1]
 
+    def accepted_chain(self, adoption):
+        latest = {r["step_id"]: r for r in self.history("verification_started", adoption)}
+        recorded = {r["step_id"]: r for r in self.history("accepted", adoption)
+                    if latest.get(r["step_id"], {}).get("run_id") == r["run_id"]}
+        completed = {}
+        for step in adoption["plan"]["steps"]:
+            prerequisites = step.get("prerequisites", [])
+            if step["id"] in recorded and set(prerequisites) <= completed.keys():
+                expected = {pid: completed[pid]["run_id"] for pid in prerequisites}
+                if latest[step["id"]].get("prerequisite_runs", {}) == expected:
+                    completed[step["id"]] = recorded[step["id"]]
+        return completed
+
     def completed_steps(self, adoption):
-        latest = {r["step_id"]: r["run_id"] for r in self.history("verification_started", adoption)}
-        return {r["step_id"] for r in self.history("accepted", adoption) if latest.get(r["step_id"]) == r["run_id"]}
+        return set(self.accepted_chain(adoption))
 
     def verify(self, step_id, builder_session):
         adoption, step = self.step(step_id)
         require(builder_session.strip(), "Record builder session identity")
         accepted = self.completed_steps(adoption)
         require(set(step.get("prerequisites", [])) <= accepted, "Prerequisite step not accepted")
+        prerequisite_runs = {pid: self.accepted_chain(adoption)[pid]["run_id"] for pid in step.get("prerequisites", [])}
         with exclusive(self.root / ".workflow/verify.lock"):
             run_id = uuid.uuid4().hex
             directory = self.root / ".workflow/runs" / run_id
@@ -357,6 +370,7 @@ class Workflow:
             candidate = self.candidate(adoption, step, directory)
             request = {"run_id": run_id, "step_id": step_id, "candidate_id": candidate["id"],
                        "plan_hash": adoption["plan_hash"], "builder_session": builder_session,
+                       "prerequisite_runs": prerequisite_runs,
                        "started": now(), "configuration": adoption["plan"]["configuration"],
                        "requirements": step["requirements"], "reproduce_checks": step.get("reproduce_checks", []),
                        "consultations": step.get("consultations", []),
@@ -477,7 +491,12 @@ class Workflow:
 
     def evidence(self, step_id):
         adoption, step = self.step(step_id)
+        require(set(step.get("prerequisites", [])) <= self.completed_steps(adoption),
+                "Prerequisite acceptance superseded or incomplete; verify and accept it before this dependent gate")
         run = self.latest_run(step_id, adoption)
+        expected = {pid: self.accepted_chain(adoption)[pid]["run_id"] for pid in step.get("prerequisites", [])}
+        require(run.get("prerequisite_runs", {}) == expected,
+                "Prerequisite acceptance changed; request fresh dependent verification/audit/approval")
         directory = self.root / ".workflow/runs" / run["run_id"]
         finished = [r for r in self.history("verification_finished", adoption) if r["run_id"] == run["run_id"]]
         require(finished, "Interrupted/incomplete run; request verification again")

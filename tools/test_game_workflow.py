@@ -35,6 +35,7 @@ if mode == 'queue': time.sleep(.25)
 report = {k: os.environ['GAME_'+k.upper()] for k in ['run_id','candidate_id','plan_hash','attempt_id','check_id']}
 report.update(schema_version=1, completed=True, tests=[{'id':'fixture-rule','status':'pass'}], diagnostics=[], artifacts=[])
 if mode == 'fail': report['tests'][0]['status'] = 'fail'
+if mode == 'toggle' and pathlib.Path('.workflow/failing-environment').exists(): report['tests'][0]['status'] = 'fail'
 if mode == 'skip': report['tests'][0]['status'] = 'skipped'
 if mode == 'missing': report['tests'] = []
 if mode == 'duplicate': report['tests'] *= 2
@@ -121,10 +122,10 @@ class Commissioning(unittest.TestCase):
             'blockers':[], 'requirements':[{'id':'FIXTURE-01','status':'pass','evidence':'Fixture native report and source inspected'}],
             'checks':[{'id':'rule','status':'pass','evidence':'Fresh fixture-rule report, both logs and completion inspected'}]}
 
-    def import_review(self, run, review=None):
+    def import_review(self, run, review=None, step='sample'):
         path = self.root / '.workflow/incoming-review.json'
         gw.write_json(path, review or self.review(run))
-        return self.workflow.audit('sample', path)
+        return self.workflow.audit(step, path)
 
     def accept_pass(self):
         run = self.run_mode()
@@ -277,6 +278,43 @@ class Commissioning(unittest.TestCase):
         self.assertEqual(self.workflow.verify('sample','builder-fixture')['verification'], 'passed')
         tool.write_text('upgraded', encoding='utf-8')
         with self.assertRaisesRegex(gw.GateError, 'external tool/input changed'): self.workflow.verify('sample','builder-fixture')
+
+    def test_new_prerequisite_failure_revokes_dependent_gate_for_same_candidate(self):
+        first = self.plan['steps'][0]
+        first['checks'][0]['argv'][-1] = 'toggle'
+        second = copy.deepcopy(first)
+        second.update(id='second', prerequisites=['sample'])
+        second['checks'][0]['argv'][-1] = 'pass'
+        third = copy.deepcopy(second)
+        third.update(id='third', prerequisites=['second'])
+        self.plan['steps'] = [first, second, third]
+        self.adopt()
+        for step in ['sample','second','third']:
+            run = self.workflow.verify(step,'builder-fixture')
+            self.import_review(run,step=step)
+            self.workflow.accept(step)
+        saved_candidate = run['candidate_id']
+        (self.root/'.workflow/failing-environment').write_text('Simulated adverse runtime',encoding='utf-8')
+        failed = self.workflow.verify('sample','builder-fixture')
+        self.assertEqual(failed['candidate_id'],saved_candidate)
+        self.assertEqual(failed['verification'],'failed')
+        for step in ['second','third']:
+            with self.assertRaisesRegex(gw.GateError,'Prerequisite acceptance'): self.workflow.accept(step)
+        state = self.workflow.status()
+        self.assertEqual(state['current_step'],'sample')
+        self.assertFalse(any(s['accepted_current_candidate'] for s in state['steps']))
+        (self.root/'.workflow/failing-environment').unlink()
+        restored = self.workflow.verify('sample','builder-fixture')
+        self.import_review(restored)
+        self.workflow.accept('sample')
+        # A new prerequisite acceptance cannot silently revive old downstream evidence.
+        self.assertEqual(self.workflow.status()['current_step'],'second')
+        with self.assertRaisesRegex(gw.GateError,'Prerequisite acceptance changed'): self.workflow.accept('second')
+        for step in ['second','third']:
+            rerun = self.workflow.verify(step,'builder-fixture')
+            self.import_review(rerun,step=step)
+            self.workflow.accept(step)
+        self.assertTrue(all(s['accepted_current_candidate'] for s in self.workflow.status()['steps']))
 
     def consultation(self):
         catalog = gw.read_json(LIBRARY / 'docs/designing_games_pilot/principles.json')

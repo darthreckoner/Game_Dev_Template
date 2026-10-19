@@ -17,7 +17,7 @@ remain game starters, not another acceptance store. No game was modified.
   `game-conductor` skill, source-linked shared definitions and contracts,
   source-linked tooling decision, targeted Claude hooks and starter exclusions.
   One SQLite event ledger owns execution/acceptance per opted-in project.
-- Latest run: 28 tests pass, including actual Git Bash hook commands from another
+- Latest run: 29 tests pass, including actual Git Bash hook commands from another
   working directory and the shared verification/editor queue. Human actions are simulated only in disposable
   fixtures; no real project plan/playtest was approved. Live Unreal unavailable;
   simulator proves queued reads and timeout-before-retry reconciliation only.
@@ -33,6 +33,12 @@ remain game starters, not another acceptance store. No game was modified.
   closed); Windows byte lock initialized without reading a held byte; missing
   consultation now records failed verification. Python reads use explicit UTF-8.
 
-Next: scoped checkpoint commits, then fresh independent
-requirements-and-evidence audit. Record exact delivery state and remaining gaps.
+- Independent audit of initial e06b893/e5a0c478 reproduced all 28 original tests
+  and found one P1 prerequisite acceptance gap. Fixed by binding dependent runs
+  to exact prerequisite acceptance IDs and revalidating the transitive chain.
+  Added same-candidate failure, restoration and downstream re-verification coverage;
+  all 29 tests pass locally. Initial report is in `docs/reviews/`.
+
+Next: commit the fix and updated shared contract, obtain independent follow-up on
+those exact commits, then record final delivery state and remaining gaps.
 No push, release, publication or global configuration change is authorized.
