@@ -213,3 +213,10 @@ source. The Director owns its structure, skills, kits, and tools. Improvements
 come from project retros with evidence; the designer approves what is promoted,
 with project-specific content removed. Keep starters lean: nothing engine-specific
 loads until a project opts in.
+
+## Environment research
+
+For environment materials, lighting, foliage detail, distant forests, image
+stability or rendering performance, follow [ENVIRONMENT_REFERENCES.md](ENVIRONMENT_REFERENCES.md)
+to the canonical Game Dev Library source/topic index. Read the relevant slide
+images and notes; record adaptations and candidate evidence in the game.

@@ -37,3 +37,11 @@ gate records. When the research names a file or gate, read it as:
 
 Model names in the guide are paired with OpenAI equivalents in parentheses; the
 template's defaults are the Claude seats in `AGENTS.md`.
+
+## Environment rendering sources
+
+The [Game Dev Library environment index](C:/Dev/Game_Dev_Library/ENVIRONMENT_REFERENCES.md)
+contains the preserved Far Cry4 presentation and a page/topic catalog for
+materials, sky and reflections, indirect light, vegetation, antialiasing and
+performance. Use it for those questions; project adaptations and evaluations stay
+in the game. [Template entry point](../../ENVIRONMENT_REFERENCES.md).

@@ -105,3 +105,9 @@ behind the workflow. Its Appendix A goes stale fastest; refresh it before
 choosing an engine or an asset service for a new project. The sibling
 [Game_Dev_Library](https://github.com/darthreckoner/Game_Dev_Library) holds the
 dated research archive.
+
+## Environment references
+
+[Environment research](ENVIRONMENT_REFERENCES.md) routes material, lighting,
+foliage, image-stability and rendering-cost questions to the canonical
+[Game Dev Library index](C:/Dev/Game_Dev_Library/ENVIRONMENT_REFERENCES.md).
