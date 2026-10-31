@@ -134,8 +134,10 @@ verdict is the acceptance decision; record it in `STATE.md` in their words.
 
 ## Retro
 
-After the designer accepts a build, after a rebuild, or when the Friction log in
-`STATE.md` shows the same problem twice, run the `retro` skill.
+After every designer gate (accepted or not), after the designer accepts a build,
+after a rebuild, or when the Friction log in `STATE.md` shows the same problem
+twice, run the `retro` skill. Its required first step records every lesson in the
+template's lessons ledger.
 
 ## Handoff
 

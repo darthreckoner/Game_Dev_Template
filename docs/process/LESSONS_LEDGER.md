@@ -37,9 +37,11 @@ Every lesson learned on every game made from this template is recorded here. The
 | 14 | Keep ticket status to one line. Put history in reviews, not in the status line. | Same file, L12 | Proposed: `docs/tickets/TEMPLATE.md` |
 | 15 | What worked: domain agents with dossiers; advisory research before tickets; measure-then-decide gates; Director capture review before every merge. | Same file, "What worked" | Proposed: an agents folder and the `game-director` skill |
 | 16 | Godot engine and tooling pitfalls (about 30: import cache, headless timing, pause counters, physics monitor semantics, GPU contention, Jolt body limit, height-field squares, visibility range, SDFGI, shader derivatives, system fonts, SDL3 pad limits) | Backcountry Expedition, per-row evidence in the reference | Applied: `kits/godot/skill/godot/references/pitfalls.md`, linked from the kit's `SKILL.md` work loop |
+| 17 | A rule that exists only as prose gets skipped: the 2026-10-26 template candidates were never promoted. Put rules into the skills' required steps, and back them with a test. | Backcountry Expedition, `docs/process/template-candidates.md` | Applied: required ledger step in the `retro` skill and in the `game-director` Retro section; `LessonsLedger` tests in `tools/test_game_workflow.py` |
 
 ## Audit log
 
 | Date | Auditor | Result |
 |---|---|---|
 | 2026-10-31 | Director | Ledger created. Rows 1–16 recorded; row 16 (Godot pitfalls) Applied in the kit, rows 1–15 Proposed. The next audit follows the Backcountry Expedition retro. |
+| 2026-10-31 | Director | Hardened: the retro and game-director skills require the ledger, and `LessonsLedger` tests (4) pass. Rows 16–17 Applied; 1–15 Proposed. |

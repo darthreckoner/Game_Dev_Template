@@ -428,5 +428,39 @@ class Commissioning(unittest.TestCase):
         with self.assertRaisesRegex(gw.GateError,'Unknown editor outcome'): self.workflow.editor_call('sample','read')
 
 
+class LessonsLedger(unittest.TestCase):
+    """Every lesson from every game is recorded and the template is audited (designer, 2026-10-31)."""
+    ROOT = Path(__file__).resolve().parents[1]
+
+    def read(self, rel):
+        path = self.ROOT / rel
+        self.assertTrue(path.is_file(), f'missing {rel}')
+        return path.read_text(encoding='utf-8')
+
+    def test_ledger_has_rules_rows_and_audit_log(self):
+        text = self.read('docs/process/LESSONS_LEDGER.md')
+        self.assertIn('## Rules', text)
+        self.assertIn('## Audit log', text)
+        rows = [l for l in text.splitlines() if l.startswith('| ') and l[2:3].isdigit()]
+        self.assertGreater(len(rows), 0, 'ledger has no lesson rows')
+        for row in rows:
+            self.assertRegex(row, r'Applied|Proposed|Rejected', f'row without a change state: {row[:60]}')
+
+    def test_godot_pitfalls_exist_and_skill_links_them(self):
+        self.read('kits/godot/skill/godot/references/pitfalls.md')
+        self.assertIn('references/pitfalls.md', self.read('kits/godot/skill/godot/SKILL.md'))
+
+    def test_retro_and_director_require_the_ledger(self):
+        self.assertIn('LESSONS_LEDGER', self.read('.claude/skills/retro/SKILL.md'))
+        self.assertIn('lessons ledger', self.read('.claude/skills/game-director/SKILL.md'))
+        self.assertIn('LESSONS_LEDGER', self.read('AGENTS.md'))
+
+    def test_new_game_copies_ledger_and_kits(self):
+        script = self.read('tools/new-game.ps1')
+        block = script[script.index('$excludeDirs'):script.index('$excludeFiles')]
+        self.assertNotIn("docs\process", block)
+        self.assertNotIn("'kits'", block)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

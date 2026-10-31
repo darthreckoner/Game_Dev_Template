@@ -21,6 +21,21 @@ the designer approves them. It does not edit other skills on its own authority.
   handoffs, tickets that changed nothing, time or token costs if known.
 - `docs/process/ASSUMPTIONS.md`.
 
+## Record every lesson (required, before proposing)
+
+Every lesson from this project goes into the template's lessons ledger, all of
+them, not only the ones this retro acts on (designer, 2026-10-31). The ledger is
+`docs/process/LESSONS_LEDGER.md` in the template source (`C:\Dev\Game_Dev_Template`).
+- One row per lesson: the lesson in general terms, an evidence pointer
+  (project and file), and the template change as Applied, Proposed or Rejected.
+- Engine-specific pitfalls also go into that engine kit's pitfalls reference
+  (for Godot: `kits/godot/skill/godot/references/pitfalls.md`), with a ledger row.
+- Audit the template against the ledger: every Applied row still guarded, every
+  Proposed row still listed. Add a dated line to the ledger's Audit log.
+
+A retro is not complete until the ledger rows and the audit line are committed
+in the template source. Report how many lessons were recorded.
+
 ## Propose (at most three)
 
 For each proposal, state:
@@ -42,6 +57,9 @@ Apply approved changes within the Director's write scope and add or update
 assumption rows. Changes to `AGENTS.md` or the seat defaults in a game project
 need the designer's agreement; changes to code or tests go to the coder as a
 ticket. Prune the Friction log in `STATE.md` to what is still open.
+
+When a change is promoted into the template, mark its ledger row Applied with
+the file and commit.
 
 For template candidates, write a short note in
 `docs/process/template-candidates.md` with the evidence. Promotion into the
