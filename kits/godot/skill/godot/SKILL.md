@@ -14,7 +14,9 @@ references for an agreed task, not defaults to impose.
 
 1. Read the relevant project guide and inspect the scene or script being changed.
    Preserve unrelated edits and authored layouts.
-2. For command setup, read [Windows commands](references/windows.md). Discover an
+2. Before automating tests, measuring performance or building large worlds, read
+   [pitfalls learned in projects](references/pitfalls.md).
+   For command setup, read [Windows commands](references/windows.md). Discover an
    operation with dispatcher `help` before using an unfamiliar parameter. Treat
    scoped linting as diagnostic advice; confirm findings against Godot and the
    project's conventions before changing code.

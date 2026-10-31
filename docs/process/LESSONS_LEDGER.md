@@ -5,6 +5,7 @@ Every lesson learned on every game made from this template is recorded here. The
 ## Rules
 
 - **One row per lesson.** Each row says what went wrong (or right), the evidence, and the project and file the evidence lives in. Strip project-specific detail from the lesson itself, but keep the pointer.
+- **Engine kits too.** Engine-specific pitfalls go into that kit's pitfalls reference (for example `kits/godot/skill/godot/references/pitfalls.md`), with a ledger row pointing at it.
 - **Every project feeds the ledger.** After each designer gate or retro, the Director adds that project's lessons here, all of them, not only the ones a retro chooses to act on.
 - **The Template change column has three states:**
   - **Applied**, with the file and commit;
@@ -35,9 +36,10 @@ Every lesson learned on every game made from this template is recorded here. The
 | 13 | For any comparison or parity goal, ask up front for the quality bar, the reference build and one reference screenshot per aspect. | Same file, L9 and L10 (a late bar added twelve tickets) | Proposed: `game-director` design interview, `art-direction` |
 | 14 | Keep ticket status to one line. Put history in reviews, not in the status line. | Same file, L12 | Proposed: `docs/tickets/TEMPLATE.md` |
 | 15 | What worked: domain agents with dossiers; advisory research before tickets; measure-then-decide gates; Director capture review before every merge. | Same file, "What worked" | Proposed: an agents folder and the `game-director` skill |
+| 16 | Godot engine and tooling pitfalls (about 30: import cache, headless timing, pause counters, physics monitor semantics, GPU contention, Jolt body limit, height-field squares, visibility range, SDFGI, shader derivatives, system fonts, SDL3 pad limits) | Backcountry Expedition, per-row evidence in the reference | Applied: `kits/godot/skill/godot/references/pitfalls.md`, linked from the kit's `SKILL.md` work loop |
 
 ## Audit log
 
 | Date | Auditor | Result |
 |---|---|---|
-| 2026-10-31 | Director | Ledger created. Rows 1–15 recorded; none Applied in the template yet. The next audit follows the Backcountry Expedition retro. |
+| 2026-10-31 | Director | Ledger created. Rows 1–16 recorded; row 16 (Godot pitfalls) Applied in the kit, rows 1–15 Proposed. The next audit follows the Backcountry Expedition retro. |
