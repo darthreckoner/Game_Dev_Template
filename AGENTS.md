@@ -214,6 +214,11 @@ come from project retros with evidence; the designer approves what is promoted,
 with project-specific content removed. Keep starters lean: nothing engine-specific
 loads until a project opts in.
 
+Every lesson learned on every game made from this template goes into
+`docs/process/LESSONS_LEDGER.md` (designer, 2026-10-31): all of them, with
+evidence pointers, whether or not a retro acts on them. Audit the template
+against the ledger after each project retro and log the audit there.
+
 ## Environment research
 
 For environment materials, lighting, foliage detail, distant forests, image
