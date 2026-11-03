@@ -14,6 +14,8 @@ Versions: Godot 4.7.2, Forward+, Jolt, Windows, unless a row says otherwise.
 | Python's `write_text()` on Windows defaults to cp1252, so non-ASCII text becomes invalid UTF-8 in GDScript. | Always pass `encoding="utf-8"`. | BE T-033 friction |
 | Git Bash heredocs break GDScript, and `python -` with redirected stdin opens a REPL that hangs. | Write scripts to an ignored `work/` folder and run them as files. | BE friction log, which recorded three recurrences |
 | Two Godot instances on one project folder corrupt `.godot/` and scenes. | Give each coder its own worktree, and never run two editors on one folder. | BE agent lineup |
+| Git ignores a scratch folder, but Godot still discovers its GDScript and registers duplicate global classes. | Put `.gdignore` in the scratch folder before copying `.gd` files there; rebuild the import/class cache after a duplicate-class startup. A Git ignore is not an engine ignore. | BE, `docs/captures/T-044/diagnostics/FRICTION.md`, invalid C startup |
+| A Windows PowerShell `Tee-Object` log was UTF-16 while its collector assumed UTF-8, stopping evidence collection. | Detect the BOM when reading existing logs, or explicitly control the writer's encoding. Check the decoded result before using it to drive a dependent step. | BE, same T-044 friction log; `C:/Dev/Backcountry Expedition Playtest/docs/playtests/2026-11-02-controls-audio.md`, finalization friction |
 
 ## Headless testing and scenarios
 
@@ -37,6 +39,7 @@ Versions: Godot 4.7.2, Forward+, Jolt, Windows, unless a row says otherwise.
 | `--max-fps 60` shows a frame-time p99 of about 19 ms of limiter jitter even when the GPU is idle. | Don't judge a 60 fps budget from a capped run on a higher-refresh display. | BE T-039 |
 | Light GPU shots, around 1 ms, can swing 30%+ between runs. | Compare heavy shots for repeatability, and report run-to-run spread. | BE T-039 |
 | Autosaving on the main thread caused a 7–8 ms hitch. | Write saves on a worker thread. | BE T-039 |
+| A successful process exit can measure a paused game or a decorated window smaller than the required viewport. | For each qualifying interval, verify actual window/viewport/texture dimensions and render scale; reject pauses and require the intended physics progress and travel. Keep invalid invocations as diagnostics. | BE, `docs/captures/T-044/diagnostics/FRICTION.md`, 1920x1061 preflights and paused C2 invocation |
 
 ## Rendering
 
@@ -55,6 +58,7 @@ Versions: Godot 4.7.2, Forward+, Jolt, Windows, unless a row says otherwise.
 | `HeightMapShape3D` must have `map_width == map_depth` to become a Jolt height field; otherwise it becomes a slow mesh. | Use square, padded chunks. | BE T-033 |
 | Jolt's default `max_bodies` is 10,240. Scattering one body per tree or rock overflows it silently: creation fails, with one error. | Use compound static bodies per cell, streamed in a ring around each vehicle, or raise the limit. | BE T-034 |
 | A tyre model with no static friction lets a parked vehicle creep downhill. | Add an explicit parking hold. | BE T-035 |
+| A float32 `Vector2` intermediate can round a point just below a grid midpoint into the next surface sample. | Match the authoritative scalar grid arithmetic and test both axes and surface orderings against an independent raw-grid example. Do not add an exclusion margin to hide the mismatch. | BE, `docs/captures/T-045/REPORT.md`, Clearance diagnosis: three grass-on-talus records |
 
 ## UI and input
 
@@ -63,3 +67,9 @@ Versions: Godot 4.7.2, Forward+, Jolt, Windows, unless a row says otherwise.
 | Windows system fonts (Bahnschrift, Segoe UI, Consolas) can't be redistributed. | Load them by name with `SystemFont`, never copy the files, and keep a fallback chain. | BE T-041 research |
 | Godot 4.5+ uses SDL3, which gives no DualSense adaptive triggers and no lightbar effects. | Plan rumble only, gated on `has_joy_vibration()`. | BE ui-input dossier F1 |
 | Closing a menu with a button that is also a gameplay action fires that action. | Wait until the button is released before resuming play. | BE T-036 |
+
+## Audio
+
+| Pitfall | Do this | Evidence |
+|---|---|---|
+| Headless audio rules use the Dummy driver, so a passing rule test does not exercise the native audio device or scheduling. | Record the actual audio driver; run playback/phase checks through the native backend when that is the claim. Keep subjective sound quality as a separate listening result. | BE combined preview, `C:/Dev/Backcountry Expedition Playtest/docs/playtests/2026-11-02-controls-audio.md`: Dummy rule run and 36 WASAPI checks; listening pending |
