@@ -1,5 +1,11 @@
 # Tooling maintenance handoff — 2026-10-19
 
+2026-11-02: Backcountry Expedition's combined controls/audio playtest added
+Proposed ledger rows 18–20 (UI action context, stationary-fixture migration,
+and PowerShell snapshot comparison). Evidence is linked in the ledger. This is
+lesson capture under the designer's standing instruction; no template rule,
+skill, engine kit, game starter, audit or human approval was promoted.
+
 Authorized scope: shared game runbook/conductor integration with the existing
 Designing Games pilot. This is template maintenance; `DESIGN.md` and `STATE.md`
 remain game starters, not another acceptance store. No game was modified.
