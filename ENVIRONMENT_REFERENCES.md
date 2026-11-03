@@ -10,6 +10,15 @@ lighting, vegetation, antialiasing and performance. Its original PDF and provena
 are preserved in the Library. Read the slide image and speaker notes before
 adapting an example. Historical measurements do not establish a project's budget.
 
+The [rendering-techniques reference](C:/Dev/Game_Dev_Library/docs/research/2026-11-03-rendering-techniques/README.md)
+covers fourteen method groups: PBR, parallax occlusion, subsurface scattering,
+hair shading, shell-and-fin fur, volumetrics, reflections, SSAO/contact shadows,
+bloom, upscaling/frame generation, antialiasing, light baking, cascaded shadows
+and global illumination. Retrieve it for use cases, content prerequisites,
+artifacts, alternatives and a matched candidate-evaluation plan. Engine and
+backend support must be checked for the project's pinned version and export;
+the reference records documentation, not local runtime qualification.
+
 Record the chosen adaptation, tradeoff, candidate measurements and designer's
 judgment in the game's existing decision format. This pointer adds reference
 navigation; it does not select an engine, rendering feature or visual direction.

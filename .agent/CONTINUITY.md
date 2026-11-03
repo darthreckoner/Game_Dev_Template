@@ -1,3 +1,32 @@
+# Rendering research — 2026-11-03
+
+User requested research on fourteen rendering-method groups from a supplied
+Reddit excerpt, for addition to the template. Detailed reference belongs at
+`C:/Dev/Game_Dev_Library/docs/research/2026-11-03-rendering-techniques/README.md`.
+Template navigation uses `ENVIRONMENT_REFERENCES.md` and `docs/research/README.md`;
+the Library's environment index links the report. This is on-demand research,
+with no engine installation, rendering default, visual choice or game change.
+
+Started on `main` in both repos. Preserve the template's untracked
+`AI Game Development Guide.md` and the Library's existing README edit and
+untracked books/pilot/older-research files. Stage only this task's exact files.
+`DESIGN.md` and `STATE.md` remain game starter placeholders; maintenance
+continuity stays here. No push or publication is authorized.
+
+Historical cross-check: original Far Cry 4 PDF hash matches `source.json`;
+read slide images and available notes for pp. 19-20, 38, 43-44 and 113.
+These establish historical approximations and production context, not current
+engine support or a project's performance. Rendered excerpts and validation
+diagnostics are ignored under `work/rendering-research/`.
+
+Friction: first navigation patch missed a wrapped context line; corrected it.
+Report review and checks pass: fourteen method sections, 32 primary sources,
+all source-reference IDs defined, and sixteen local navigation links resolve.
+Scoped Git whitespace checks pass. Full diagnostics remain in ignored work.
+No engine/runtime or benchmark checks apply to this documentation update.
+Local checkpoints contain only the report, navigation and this handoff;
+publication and project-specific evaluation remain outside this delivery.
+
 # Tooling maintenance handoff — 2026-10-19
 
 2026-11-02: Backcountry Expedition's combined controls/audio playtest added

@@ -45,3 +45,10 @@ contains the preserved Far Cry4 presentation and a page/topic catalog for
 materials, sky and reflections, indirect light, vegetation, antialiasing and
 performance. Use it for those questions; project adaptations and evaluations stay
 in the game. [Template entry point](../../ENVIRONMENT_REFERENCES.md).
+
+The [rendering-techniques research](C:/Dev/Game_Dev_Library/docs/research/2026-11-03-rendering-techniques/README.md)
+investigates the fourteen method groups from the designer's Reddit excerpt
+(2026-11-03) using primary sources. It distinguishes material, lighting, image
+stability and reconstruction choices, including costs, failure cases and
+engine/backend qualifications. It supplies an on-demand consultation prompt;
+it does not select features or visual values for new games.
