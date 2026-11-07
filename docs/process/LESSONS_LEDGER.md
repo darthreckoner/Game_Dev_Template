@@ -59,6 +59,8 @@ Every lesson learned on every game made from this template is recorded here. The
 
 | 35 | Represent terrain substrate separately from water geometry and depth; a blue wet-area mask is not evidence that water exists there. | Backcountry Expedition, `docs/playtests/2026-11-03-designer-playtest.md`, water follow-up and `water-source-inspection.json`: ground albedo uses creek/lake colours while general creeks have no water geometry/depth. Source inspection only; exact screenshot location not reproduced. | Proposed: surface/water questions in `game-director` prototype guidance; no renderer-specific fix or new asset selected. |
 
+| 36 | Compare an upgrade with stock on the same measured fixture, and state the terrain, load and rig behind an absolute physical reference. When two application paths agree, investigate the reference before changing shared physics; correct a specified pass bar only with the designer's approval. | Backcountry Expedition, `docs/reviews/T-128.md`, `docs/captures/T-128/REPORT.md`, and DESIGN Changes 2026-11-06. S171 reused an uneven garage-pad reference on a level solo-truck slab: 21.62 in expected versus 22.29 in measured. Bench and saved fitting produced identical sheets and clearance; measured rise matched the independent 4.50 in target. The designer approved a paired same-slab test; corrected S171 passed 8/8 on `a1e46ce1` and the pre-merge tier passed 81 rule files plus 19 scenarios on `57c3230e`. | Proposed: fixture/baseline examples in `docs/tickets/TEMPLATE.md` and `build-check` guidance. No template rule or skill promoted. |
+
 ## Audit log
 
 | Date | Auditor | Result |
