@@ -1,3 +1,14 @@
+# Expedition retro — 2026-11-06
+
+Recorded 25 new lessons (ledger 37-61), retained recurrence evidence, and added
+ten sourced Godot/tooling pitfalls (`28e8e50`). All 61 rows audited: 17 Applied
+documentation/skill/test guards, 44 Proposed. The previous three pilots were
+approved in the game on 11-04; no template workflow promotion occurred here.
+Evidence and proposed edits: `C:/Dev/Backcountry Expedition/docs/process/retro-2026-11-06.md`.
+Source/selector replay and four ledger tests pass; no engine was launched.
+Preserve the unrelated untracked `AI Game Development Guide.md`. Local commits
+only; nothing pushed. Next: designer reviews the three project proposals.
+
 # Rendering research — 2026-11-03
 
 User requested research on fourteen rendering-method groups from a supplied
