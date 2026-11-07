@@ -25,7 +25,7 @@ Built by: [seat and model]
 -
 
 ## Open tickets and reviews
--
+- 2026-11-07: Backcountry Expedition's atlas bake/filtering lesson is Proposed row 62 in `docs/process/LESSONS_LEDGER.md`; recorded in the project modeling plan, with template promotion pending.
 
 ## Friction log
 One line each, as it happens: a failed command, a correction from the designer,
