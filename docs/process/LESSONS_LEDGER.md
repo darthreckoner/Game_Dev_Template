@@ -91,6 +91,9 @@ Every lesson learned on every game made from this template is recorded here. The
 
 | 63 | Keep tickets focused on the change, its boundaries and its checks; link standing workflow instructions instead of repeating them in the ticket and delegation brief. | Backcountry Expedition, designer feedback 2026-11-07: T-149 was overlong; `docs/tickets/T-149-rotating-survey-board.md` shortened and active Coder steered to the concise version. | Proposed: Director ticket-writing guidance; no template workflow change promoted. |
 
+| 64 | A preserved error state must keep its recovery action reachable when ordinary content rows are unavailable. Derived display fields also need safe values for every reader. | Backcountry Expedition, T-149 parent review: a damaged survey hid its active board card; a missing title also affected navigation. Repairs `5dcc3849` / `b1590718`; `docs/reviews/2026-11-07-T-149-surveys.md` distinguishes passing earlier rules from held latest verification. | Proposed: save/UI error-path examples. Latest runtime verification remains held; no template workflow change promoted. |
+| 65 | UTF-8 output cannot recover characters lost earlier in a native-shell pipe. Verify the producer encoding or transfer exact text through a file/patch. | Backcountry Expedition, T-149: Windows PowerShell native pipe was `us-ascii` while console output was UTF-8; the short ticket rewrite lost math symbols. Explicit ASCII ranges restored in `docs/tickets/T-149-rotating-survey-board.md`; parent review records the correction. | Proposed: Windows text-transfer guidance; no template workflow change promoted. |
+
 ## Audit log
 
 | Date | Auditor | Result |
