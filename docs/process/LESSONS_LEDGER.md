@@ -89,6 +89,8 @@ Every lesson learned on every game made from this template is recorded here. The
 
 | 62 | Validate atlas bake extension and normal-map filter support together. Preserve covered texels and keep controls for both the original and newly exposed edge defects, followed by the wider exported-asset review. | Backcountry Expedition, `art/specs/garrison10-chassis-up-experiment.md`, Stage 5; `docs/reviews/garrison10-chassis-up-stage-5d.md`, Step 4. Repaired draft `c02f16bb` preserves covered normals while correcting unused border pixels; two complete rebuilds match. | Proposed: model handoff/asset-check guidance. Recorded in the project's modeling plan; template workflow promotion remains pending. |
 
+| 63 | Keep tickets focused on the change, its boundaries and its checks; link standing workflow instructions instead of repeating them in the ticket and delegation brief. | Backcountry Expedition, designer feedback 2026-11-07: T-149 was overlong; `docs/tickets/T-149-rotating-survey-board.md` shortened and active Coder steered to the concise version. | Proposed: Director ticket-writing guidance; no template workflow change promoted. |
+
 ## Audit log
 
 | Date | Auditor | Result |
