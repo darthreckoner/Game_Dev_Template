@@ -12,7 +12,6 @@ six months.
 |---|---|
 | `2026-09-25-ai-solo-game-dev-kit.md` | The evidence and tool landscape: why evidence loops beat process, why the agent must see and drive the game, why builder, judge, and acceptance stay separate, the engine and asset-service tables |
 | `2026-10-16-model-per-stage-guide.md` | Which model takes which seat at each stage, and the thirteen rules that matter more than model choice |
-| `2026-11-21-blender-skills-trial/` | Trial of the cloud-blender-skills pack on local Blender 5.2 and Backcountry's Colt: suite results, what the model check found, false alarms, and the open decision on a Blender kit |
 
 ## Vocabulary map
 

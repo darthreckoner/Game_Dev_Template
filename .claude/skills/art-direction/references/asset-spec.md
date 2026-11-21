@@ -36,7 +36,10 @@ docs before relying on these notes.
 - **Concept, UI, icons:** a strong general image model; keep the prompt and seed.
 - **3D:** Tripo or Meshy (official MCPs; rigging and animation presets). Free tiers
   may be non-commercial or attribution-only. Normalize scale, orientation, and
-  pivot before handoff, ideally with a Blender script.
+  pivot before handoff, ideally with a Blender script. `kits/blender/` has the
+  model check and export presets for this; its `more-skills.md` lists further
+  Blender skills to add when the design calls for modeling, texturing, rigging
+  or environment work.
 - **Audio:** ElevenLabs (official MCP) for SFX and music; sfxr-style generators for
   deterministic retro SFX.
 

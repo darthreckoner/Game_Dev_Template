@@ -7,7 +7,8 @@ the user chooses that engine or service. Nothing here loads at startup.
 |---|---|---|
 | `godot/` | Ready (Godot 4.7.2, Windows; dispatcher and a rendered scenario screenshot verified 2026-10-16) | `godot` skill with helpers, architecture defaults, example scenario, provenance |
 | `assets/` | Examples only | MCP configuration examples for asset services |
-| Unity, Unreal, web/three.js, Blender, Roblox | Not built | Build when a project chooses one; check current tooling first |
+| `blender/` | Ready (Blender 5.2.2 LTS, Windows; five skills verified 2026-11-21, local Blender only) | `blender-core`, scene setup, model check, optimization, export; a list of 23 more skills to add when a design calls for them; provenance |
+| Unity, Unreal, web/three.js, Roblox | Not built | Build when a project chooses one; check current tooling first |
 
 Candidate sources for unbuilt kits are in the source template's
 `docs/research/2026-09-25-ai-solo-game-dev-kit.md`, Appendix A (tool landscape
@@ -19,10 +20,11 @@ as of September 2026; refresh before use):
   framework. Blueprints are binary, so agents depend on the editor bridge.
 - **three.js/web:** Playwright for driving, an exposed `window.__game` test API for
   state, seeded simulation; skill packs such as threejs-game-skills for reference.
-- **Blender:** the official Blender Lab MCP for exploration; headless
-  `blender -b -P` scripts for repeatable normalize/export steps.
 - **Roblox:** the Studio MCP plus Rojo for file sync; verify Open Cloud and TestEZ
   details first.
+
+The Blender kit is a tool kit that sits beside an engine kit; the official
+Blender Lab MCP remains the candidate for live exploration and is not part of it.
 
 A new kit copies the Godot kit's shape: one scoped skill installed to
 `.claude/skills/<engine>/`, an architecture defaults reference, verified Windows

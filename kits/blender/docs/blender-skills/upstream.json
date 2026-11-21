@@ -1,0 +1,126 @@
+{
+ "upstream": "https://github.com/patch-gg/cloud-blender-skills",
+ "commit": "d659b96ee43518693ec3e2ea5062211da43720b9",
+ "commit_date": "2026-11-18",
+ "based_on": "https://github.com/EL4CTEO/blender-skills 1.3.2",
+ "license": "MIT",
+ "note": "sha256 of each upstream file as stored in git (LF line endings)",
+ "files": {
+  "skills/blender-asset-qa/LICENSE": {
+   "upstream_path": "LICENSE",
+   "sha256": "d81d0037e3a29a01ccfefaae420d5ba73e905cabf3995700e9075c7205c06cc5"
+  },
+  "skills/blender-asset-qa/SKILL.md": {
+   "upstream_path": "skills/blender-asset-qa/SKILL.md",
+   "sha256": "968e4435eeba040f0952cc335c8e9e7182e1d7008aa4295f202ddb836fa49ec9"
+  },
+  "skills/blender-asset-qa/scripts/_bpyx.py": {
+   "upstream_path": "skills/blender-asset-qa/scripts/_bpyx.py",
+   "sha256": "addb75bea2dea767b2cfebb3a7f0a4ec5c6275e87ce97abdf7d32f399257fb38"
+  },
+  "skills/blender-asset-qa/scripts/qa_check.py": {
+   "upstream_path": "skills/blender-asset-qa/scripts/qa_check.py",
+   "sha256": "37d01051f98fdafd3a9f13f7525804174c68a7bacb446d5bd5b2f43fc2785cca"
+  },
+  "skills/blender-asset-qa/scripts/review_shots.py": {
+   "upstream_path": "skills/blender-asset-qa/scripts/review_shots.py",
+   "sha256": "625755b055a288cc8a823f398766078a8e229814840a35046e78d98dddd038ba"
+  },
+  "skills/blender-core/LICENSE": {
+   "upstream_path": "LICENSE",
+   "sha256": "d81d0037e3a29a01ccfefaae420d5ba73e905cabf3995700e9075c7205c06cc5"
+  },
+  "skills/blender-core/SKILL.md": {
+   "upstream_path": "skills/blender-core/SKILL.md",
+   "sha256": "1f6ad4a10551a8920e4934e38cc00797f02cb63ff91e0d3a297c2e406a3a006b"
+  },
+  "skills/blender-core/references/api-changes-5x.md": {
+   "upstream_path": "skills/blender-core/references/api-changes-5x.md",
+   "sha256": "e34f2e39a97833d75b6177c2e281ff9481405efd88bfd2d67003560f0c421fe1"
+  },
+  "skills/blender-core/references/bpy-patterns.md": {
+   "upstream_path": "skills/blender-core/references/bpy-patterns.md",
+   "sha256": "ba7bbc708bf198bdcdfa59d9d41d830a4ae119c24ae9457830b73d9e818e2af8"
+  },
+  "skills/blender-core/scripts/_bpyx.py": {
+   "upstream_path": "skills/blender-core/scripts/_bpyx.py",
+   "sha256": "addb75bea2dea767b2cfebb3a7f0a4ec5c6275e87ce97abdf7d32f399257fb38"
+  },
+  "skills/blender-core/scripts/env_report.py": {
+   "upstream_path": "skills/blender-core/scripts/env_report.py",
+   "sha256": "e628feed806dd265e0c1ce803d92591aac208a9f463d8c47cbb939476d3b347a"
+  },
+  "skills/blender-core/scripts/run_in_blender.py": {
+   "upstream_path": "skills/blender-core/scripts/run_in_blender.py",
+   "sha256": "0b583a687e17ab72a47bff35e0efb3f1e5fc59e063401d433ad6ac09f82f8ea3"
+  },
+  "skills/blender-export-pipelines/LICENSE": {
+   "upstream_path": "LICENSE",
+   "sha256": "d81d0037e3a29a01ccfefaae420d5ba73e905cabf3995700e9075c7205c06cc5"
+  },
+  "skills/blender-export-pipelines/SKILL.md": {
+   "upstream_path": "skills/blender-export-pipelines/SKILL.md",
+   "sha256": "300f2f9d0632744ea73ce68eccd2fbdb485febef0d1743a773b34d2f13080c16"
+  },
+  "skills/blender-export-pipelines/references/godot-web.md": {
+   "upstream_path": "skills/blender-export-pipelines/references/godot-web.md",
+   "sha256": "67d2f57f75c40466039346d770ff8e622844c1f2d171d98fdef2ed300d2c2dfd"
+  },
+  "skills/blender-export-pipelines/references/roblox.md": {
+   "upstream_path": "skills/blender-export-pipelines/references/roblox.md",
+   "sha256": "9079cd534349ce5ea0034abd983cf849a19c0a08676b88486393fe8caab7e263"
+  },
+  "skills/blender-export-pipelines/references/unity.md": {
+   "upstream_path": "skills/blender-export-pipelines/references/unity.md",
+   "sha256": "6ed7fbaa57f6d8d0bdf87438bfc442bb536465b05459ffebf72b75dfa238d080"
+  },
+  "skills/blender-export-pipelines/references/unreal.md": {
+   "upstream_path": "skills/blender-export-pipelines/references/unreal.md",
+   "sha256": "377e784aa26bf0f634039f31d33b8d47800708f5d280cc518030db4e0d7005bc"
+  },
+  "skills/blender-export-pipelines/scripts/_bpyx.py": {
+   "upstream_path": "skills/blender-export-pipelines/scripts/_bpyx.py",
+   "sha256": "addb75bea2dea767b2cfebb3a7f0a4ec5c6275e87ce97abdf7d32f399257fb38"
+  },
+  "skills/blender-export-pipelines/scripts/export_asset.py": {
+   "upstream_path": "skills/blender-export-pipelines/scripts/export_asset.py",
+   "sha256": "1af675399a883fd284e108fae290a64960a9dd75d9cbc4673770bf7a1328ce37"
+  },
+  "skills/blender-game-optimization/LICENSE": {
+   "upstream_path": "LICENSE",
+   "sha256": "d81d0037e3a29a01ccfefaae420d5ba73e905cabf3995700e9075c7205c06cc5"
+  },
+  "skills/blender-game-optimization/SKILL.md": {
+   "upstream_path": "skills/blender-game-optimization/SKILL.md",
+   "sha256": "15c900a72556e1a638c95ff78e03021601affa315d710bbdb55429247ffd9b96"
+  },
+  "skills/blender-game-optimization/scripts/_bpyx.py": {
+   "upstream_path": "skills/blender-game-optimization/scripts/_bpyx.py",
+   "sha256": "addb75bea2dea767b2cfebb3a7f0a4ec5c6275e87ce97abdf7d32f399257fb38"
+  },
+  "skills/blender-game-optimization/scripts/make_lods.py": {
+   "upstream_path": "skills/blender-game-optimization/scripts/make_lods.py",
+   "sha256": "61076e02df93cfa8126a54466540db5a87d763a9910c9e650d441608678c15de"
+  },
+  "skills/blender-game-optimization/scripts/mesh_stats.py": {
+   "upstream_path": "skills/blender-game-optimization/scripts/mesh_stats.py",
+   "sha256": "6f48790b87b90cd15d4c20e6884dcfedf9aa65292f4afcc7fad9fcf7eb8216bc"
+  },
+  "skills/blender-scene-setup/LICENSE": {
+   "upstream_path": "LICENSE",
+   "sha256": "d81d0037e3a29a01ccfefaae420d5ba73e905cabf3995700e9075c7205c06cc5"
+  },
+  "skills/blender-scene-setup/SKILL.md": {
+   "upstream_path": "skills/blender-scene-setup/SKILL.md",
+   "sha256": "fbfc9b4fb42fd3434d4112700eeda86049908cd65e5f9d939f043e5358d69a25"
+  },
+  "skills/blender-scene-setup/scripts/_bpyx.py": {
+   "upstream_path": "skills/blender-scene-setup/scripts/_bpyx.py",
+   "sha256": "addb75bea2dea767b2cfebb3a7f0a4ec5c6275e87ce97abdf7d32f399257fb38"
+  },
+  "skills/blender-scene-setup/scripts/scene_audit.py": {
+   "upstream_path": "skills/blender-scene-setup/scripts/scene_audit.py",
+   "sha256": "a1b52a45bf9e591735db19f60d693d430f10fb3dde17971d927dde6988807a9b"
+  }
+ }
+}
