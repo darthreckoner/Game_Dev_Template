@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slice Playtest Sheet</title>
+<!--
+  END-OF-SLICE PLAYTEST SHEET (standard; designer rule 2026-11-24, see the game-director
+  skill, references/playtest.md, "End-of-slice playtest sheet").
+  Copy this file to docs/playtests/<date>-slice-playtest-sheet.html, then edit ONLY the
+  CONFIG, STOPS, PICKS and TAKEN blocks in the script, and the setup list marked FILL.
+  Everything else (layout, autosave, Save answers to a file, Copy as text) stays as is.
+-->
+<style>
+  :root { --ink:#1c1c1c; --rule:#9a968d; --soft:#ece8df; --paper:#fbfaf7; --accent:#2f5d50; --warn:#8a3b12; --rec:#e4efe9; --bg:#d9d6cf; }
+  * { box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font:16px/1.45 Georgia,"Times New Roman",serif; margin:0; }
+  main { background:var(--paper); max-width:980px; margin:0 auto; padding:24px 28px 140px; min-height:100vh; }
+  h1 { font-size:27px; margin:0 0 4px; }
+  h2 { font-size:21px; margin:34px 0 8px; border-bottom:2px solid var(--ink); padding-bottom:3px; }
+  h3 { font-size:17px; margin:0 0 4px; }
+  p { margin:8px 0; }
+  .note { font-size:14px; color:#3a3a3a; }
+  code, .key { font-family:Consolas,"Courier New",monospace; font-size:13.5px; background:#fff; border:1px solid #d3cfc5; border-radius:3px; padding:0 4px; }
+  .bar { position:sticky; top:0; z-index:5; background:var(--paper); border-bottom:1px solid var(--rule); padding:8px 0; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .bar .count { margin-left:auto; font-size:14px; }
+  button { font:15px Georgia,serif; cursor:pointer; border-radius:4px; padding:7px 13px; border:1px solid var(--accent); background:var(--accent); color:#fff; }
+  button.plain { background:#fff; color:var(--ink); border-color:var(--rule); }
+  .stop { background:var(--soft); border-left:5px solid var(--accent); padding:10px 14px; margin:12px 0; }
+  .stop ol { margin:6px 0 0 18px; padding:0; }
+  .item { border:1px solid var(--rule); border-radius:5px; background:#fff; padding:12px 14px; margin:14px 0; }
+  .item.done { border-left:6px solid var(--accent); }
+  .head { display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
+  .num { font:bold 14px Consolas,monospace; background:var(--ink); color:#fff; border-radius:3px; padding:1px 6px; }
+  .from { font-size:13px; color:#555; margin-left:auto; }
+  dl { display:grid; grid-template-columns:110px 1fr; gap:3px 10px; margin:8px 0; font-size:14.5px; }
+  dt { font-weight:bold; color:#444; } dd { margin:0; }
+  .scripts { font-size:13.5px; color:#444; background:#f6f4ef; padding:6px 8px; border-radius:3px; margin:6px 0; }
+  .q { margin:10px 0 2px; font-weight:bold; font-size:15px; }
+  .opts { display:flex; flex-wrap:wrap; gap:6px; margin:4px 0; }
+  .opts label { border:1px solid var(--rule); border-radius:14px; padding:3px 11px; cursor:pointer; font-size:14px; background:#fff; }
+  .opts input { margin:0 5px 0 0; vertical-align:-1px; }
+  .opts label:has(input:checked) { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .opts label.r::after { content:" ★"; color:#b07a1a; }
+  .opts label.r:has(input:checked)::after { color:#ffd98a; }
+  textarea { width:100%; font:15px/1.35 Georgia,serif; border:1px solid #c9c6be; border-radius:3px; padding:6px 8px; min-height:46px; resize:vertical; margin-top:6px; }
+  .imgs { display:flex; gap:8px; flex-wrap:wrap; margin:8px 0; }
+  .imgs figure { margin:0; flex:1 1 220px; max-width:100%; }
+  .imgs img { width:100%; height:auto; border:1px solid var(--rule); border-radius:3px; display:block; background:#eee; }
+  .imgs figcaption { font-size:12.5px; color:#444; margin-top:2px; }
+  .imgs.wide figure { flex:1 1 100%; }
+  .rec { background:var(--rec); border-radius:4px; padding:6px 9px; font-size:14.5px; margin:8px 0; }
+  table.cb { width:100%; border-collapse:collapse; font-size:14px; margin:6px 0; }
+  table.cb th, table.cb td { border:1px solid #cfcbc2; padding:4px 6px; text-align:left; vertical-align:top; }
+  table.cb th { background:var(--soft); }
+  audio { width:100%; max-width:300px; height:34px; }
+  .aud { display:flex; gap:12px; flex-wrap:wrap; margin:6px 0; font-size:14px; }
+  details { margin:10px 0; } summary { cursor:pointer; font-weight:bold; }
+  .legend { font-size:13.5px; }
+  @media (max-width:600px){ main{padding:16px 16px 120px;} dl{grid-template-columns:1fr;} .from{margin-left:0;} }
+  @media print { .bar, button { display:none; } body{background:#fff;} main{max-width:none;} .item{break-inside:avoid;} }
+</style>
+</head>
+<body>
+<main>
+<h1 id="title">Slice playtest sheet</h1>
+<p class="note" id="madeFrom"></p>
+<p class="note">Your answers save in this browser as you go. When you finish (or stop), press <b>Save answers to a file</b> and put the file in <code>docs/playtests/</code>; the Director turns it into tickets and records. <span class="legend">★ = the Director's recommendation or today's provisional setting.</span></p>
+<div class="bar">
+  <button id="saveBtn">Save answers to a file</button>
+  <button class="plain" id="copyBtn">Copy as text</button>
+  <button class="plain" id="clearBtn">Clear all</button>
+  <span class="count" id="count"></span>
+</div>
+
+<div class="item" data-id="setup">
+  <dl>
+    <dt>Your name</dt><dd><input id="who" style="width:100%;font:15px Georgia;padding:4px" placeholder="name"></dd>
+    <dt>Machine</dt><dd class="opts" data-q="machine"></dd>
+  </dl>
+  <!-- FILL: how to get the build, which launcher on which machine, the keys the tester needs, the suggested order of stops. -->
+  <ol>
+    <li>Pull <code>main</code> on each machine you use.</li>
+    <li>Launch: <code>FILL launcher per machine</code>.</li>
+    <li>Keys you will need: <span class="key">FILL</span> what it does · …</li>
+    <li>Suggested order below saves travelling between places. Skip any item; blanks are fine.</li>
+  </ol>
+</div>
+
+<div id="stops"></div>
+
+<h2>Whole slice</h2>
+<div class="item" data-id="verdict">
+  <div class="q">Your verdict on this slice</div>
+  <div class="opts" data-q="verdict"></div>
+  <div class="q">The three things that felt flattest, in your words</div>
+  <textarea data-n="flat"></textarea>
+  <div class="q">Anything else</div>
+  <textarea data-n="other"></textarea>
+</div>
+
+<h2>Designer picks not tied to the drive</h2>
+<p class="note">Decide these whenever suits you; nothing in the playtest waits on them unless marked <b>held</b>. Each shows the options, the Director's recommendation (★), and what it costs or gains.</p>
+<div id="picks"></div>
+
+<details>
+  <summary>Already set for you, provisionally (swap any of them)</summary>
+  <p class="note">The Director took these so tickets could keep running. Tick only the ones you want changed and say to what.</p>
+  <div id="taken"></div>
+</details>
+
+<p class="note" style="margin-top:40px">Source of every line: <code>docs/playtests/end-of-slice-drive-list.md</code> and <code>docs/process/designer-picks-pending.md</code>. This sheet adds no new rules; it only gathers them.</p>
+</main>
+
+<script>
+/* ================= FILL FROM HERE ================= */
+const CONFIG = {
+  title: "Slice playtest sheet",              // page heading
+  date: "YYYY-MM-DD",                          // day the sheet was made
+  build: "main at COMMIT",                     // exact commit the designer plays
+  madeFrom: "the end-of-slice drive list, the pending designer picks and STATE.md",
+  machines: ["Main PC","Target laptop","Both"],
+  captures: "../captures/",                    // image paths below are relative to this
+};
+/* STOPS: one per place, in the order that saves travel. Each item is one drive-list line.
+   n: drive-list number · t: short title · from: tickets · where/veh/range/tryit: from the line
+   scripts: what scripted runs reported (background, not a verdict) · imgs: [[path under captures, caption]]
+   qs: [[question, [options]]] — put ★ in the option that is today's setting or the Director's pick. */
+const STOPS = [
+ { id:"A", title:"Stop A — <place>", how:["How to get there (launcher, world switch, start point)."],
+   items:[
+  {n:"1", t:"Example drive", from:"T-000", where:"Where to go", veh:"Vehicle and parts", range:"Gear or mode",
+   tryit:"What to try, as the drive list says.", scripts:"What the scripted run reported.",
+   imgs:[], qs:[["The question this drive answers",["Right ★","Too easy","Too hard"]]]},
+ ]},
+];
+/* PICKS: open designer picks NOT tied to a drive. body may hold HTML.
+   table: [[option, gains, costs]] · rec: Director's recommendation · audio: [[relative path, caption]] · wide: true for one big image */
+const PICKS = [
+ {id:"example", t:"Example pick", from:"T-000",
+  body:"What is being decided and why it is open.",
+  imgs:[], table:[["Option A ★","What it gains","What it costs"],["Option B","…","…"]],
+  rec:"Option A, because …", qs:[["Pick",["A ★","B"]]]},
+];
+/* TAKEN: provisional picks the Director already took for the designer: [what was taken, cost to change, ticket] */
+const TAKEN = [
+ ["Example: a value taken so a ticket could run","One tuning value","T-000"],
+];
+/* ================= FILL ENDS HERE ================= */
+const STORE = "slice-playtest-" + CONFIG.date;
+const C = CONFIG.captures;
+document.getElementById("title").textContent = CONFIG.title;
+document.getElementById("madeFrom").innerHTML = `Made ${CONFIG.date} by the Director from ${CONFIG.madeFrom}. Build: <code>${CONFIG.build}</code>. Click any picture to open it full size.`;
+
+/* ---------- Rendering ---------- */
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(STORE) || "{}") || {}; } catch(e) { saved = {}; }
+function persist(){ try { localStorage.setItem(STORE, JSON.stringify(saved)); } catch(e){} updateCount(); }
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+const isRec = o => /★/.test(o);
+function optsHTML(key, opts){
+  return opts.map(o => { const lab = o.replace(/\s*★\s*/g," ").trim();
+    return `<label class="${isRec(o)?"r":""}"><input type="radio" name="${esc(key)}" value="${esc(lab)}" ${saved[key]===lab?"checked":""}>${esc(lab)}</label>`; }).join("");
+}
+function imgsHTML(imgs, wide){
+  if(!imgs) return "";
+  return `<div class="imgs ${wide?"wide":""}">` + imgs.map(([p,c]) => `<figure><a href="${C+p}" target="_blank"><img loading="lazy" src="${C+p}" alt="${esc(c)}"></a><figcaption>${esc(c)} · <code>${esc(C+p)}</code></figcaption></figure>`).join("") + `</div>`;
+}
+function qsHTML(id, qs){
+  return (qs||[]).map((q,i)=>`<div class="q">${esc(q[0])}</div><div class="opts">${optsHTML(id+"::"+q[0], q[1])}</div>`).join("");
+}
+function noteHTML(id){ return `<textarea data-n="${esc(id)}" placeholder="Notes">${esc(saved["note::"+id]||"")}</textarea>`; }
+
+const stopsEl = document.getElementById("stops");
+stopsEl.innerHTML = STOPS.map(s => `
+  <h2>${esc(s.title)}</h2>
+  <div class="stop"><b>Getting there</b><ol>${s.how.map(h=>`<li>${h}</li>`).join("")}</ol>
+  <div style="margin-top:6px;font-size:14px">Items: ${s.items.map(i=>"#"+i.n).join(" · ")}</div></div>
+  ${s.items.map(it => `
+   <div class="item" data-id="${esc(it.n)}">
+    <div class="head"><span class="num">#${esc(it.n)}</span><h3>${esc(it.t)}</h3><span class="from">${esc(it.from)}</span></div>
+    <dl><dt>Where</dt><dd>${it.where}</dd><dt>Vehicle</dt><dd>${esc(it.veh)}</dd><dt>Range</dt><dd>${esc(it.range)}</dd><dt>Try this</dt><dd>${it.tryit}</dd></dl>
+    ${it.scripts?`<div class="scripts"><b>Scripts reported (background, not a verdict):</b> ${esc(it.scripts)}</div>`:""}
+    ${imgsHTML(it.imgs)}
+    ${qsHTML(it.n, it.qs)}
+    ${noteHTML(it.n)}
+   </div>`).join("")}
+`).join("");
+
+document.querySelector('[data-q="machine"]').innerHTML = optsHTML("setup::Machine",CONFIG.machines);
+document.querySelector('[data-q="verdict"]').innerHTML = optsHTML("verdict::Slice",["Accept","Accept with shortcomings (note)","Not yet: patch","Not yet: rethink"]);
+
+document.getElementById("picks").innerHTML = PICKS.map(p => `
+  <div class="item" data-id="${esc(p.id)}">
+   <div class="head"><h3>${esc(p.t)}</h3><span class="from">${esc(p.from)}</span></div>
+   <p>${p.body}</p>
+   ${imgsHTML(p.imgs, p.wide)}
+   ${p.audio?`<div class="aud">${p.audio.map(([s,c])=>`<div>${esc(c)}<br><audio controls preload="none" src="${s}"></audio></div>`).join("")}</div>`:""}
+   ${p.table?`<table class="cb"><tr><th>Option</th><th>Gains</th><th>Costs</th></tr>${p.table.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("")}</table>`:""}
+   ${p.rec?`<div class="rec">★ <b>Director recommends:</b> ${esc(p.rec)}</div>`:""}
+   ${qsHTML(p.id, p.qs)}
+   ${noteHTML(p.id)}
+  </div>`).join("");
+
+document.getElementById("taken").innerHTML = `<table class="cb"><tr><th style="width:34px">Swap</th><th>Taken for you</th><th>Cost to change</th><th style="width:90px">Ticket</th></tr>` +
+  TAKEN.map((r,i)=>{ const k="taken::"+r[0]; return `<tr><td><input type="checkbox" data-c="${esc(k)}" ${saved[k]?"checked":""}></td><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`; }).join("") +
+  `</table>${noteHTML("taken")}`;
+
+/* restore setup and verdict notes */
+const who = document.getElementById("who"); who.value = saved["setup::Name"]||"";
+who.addEventListener("input",()=>{ saved["setup::Name"]=who.value; persist(); });
+document.querySelectorAll("textarea[data-n]").forEach(t=>{ const k="note::"+t.dataset.n; if(saved[k]) t.value=saved[k]; t.addEventListener("input",()=>{ saved[k]=t.value; persist(); markDone(); }); });
+document.addEventListener("change", e=>{
+  const t=e.target;
+  if(t.type==="radio"){ saved[t.name]=t.value; persist(); markDone(); }
+  if(t.type==="checkbox" && t.dataset.c){ saved[t.dataset.c]=t.checked; persist(); }
+});
+function markDone(){
+  document.querySelectorAll(".item[data-id]").forEach(el=>{
+    const any = [...el.querySelectorAll("input[type=radio]")].some(r=>r.checked) || [...el.querySelectorAll("textarea")].some(t=>t.value.trim());
+    el.classList.toggle("done", any);
+  });
+}
+function updateCount(){
+  const items=[...document.querySelectorAll(".item[data-id]")];
+  const done=items.filter(el=>[...el.querySelectorAll("input[type=radio]")].some(r=>r.checked)||[...el.querySelectorAll("textarea")].some(t=>t.value.trim())).length;
+  document.getElementById("count").textContent = `${done} of ${items.length} items answered · saved in this browser`;
+}
+markDone(); updateCount();
+
+/* ---------- Export ---------- */
+function collect(){
+  const answers=[];
+  for(const [k,v] of Object.entries(saved)){
+    if(v===""||v===false||v==null) continue;
+    const [sec,...rest]=k.split("::"); answers.push({item:sec, question:rest.join("::"), answer:v});
+  }
+  return { sheet:CONFIG.title+" "+CONFIG.date, build:CONFIG.build, saved_at:new Date().toISOString(), answers };
+}
+document.getElementById("saveBtn").onclick=()=>{
+  const blob=new Blob([JSON.stringify(collect(),null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=CONFIG.date+"-slice-playtest-answers.json"; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+};
+document.getElementById("copyBtn").onclick=async()=>{
+  const txt=collect().answers.map(a=>`${a.item} | ${a.question} | ${a.answer}`).join("\n");
+  try{ await navigator.clipboard.writeText(txt); alert("Copied. Paste it into the chat with the Director."); }
+  catch(e){ prompt("Copy this:", txt); }
+};
+document.getElementById("clearBtn").onclick=()=>{ if(confirm("Clear every answer on this sheet?")){ saved={}; persist(); location.reload(); } };
+</script>
+</body>
+</html>

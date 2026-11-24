@@ -131,6 +131,8 @@ reviews" in `STATE.md`. A plan review can stay in chat.
 When a build is ready for the designer or another person to play, prepare the
 session with `references/playtest.md`. Turn findings into tickets. The designer's
 verdict is the acceptance decision; record it in `STATE.md` in their words.
+At the end of every slice, build the playtest sheet as that file's "End-of-slice
+playtest sheet" says: the standard for every end-of-slice playtest.
 
 ## Retro
 
