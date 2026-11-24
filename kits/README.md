@@ -23,6 +23,13 @@ as of September 2026; refresh before use):
 - **Roblox:** the Studio MCP plus Rojo for file sync; verify Open Cloud and TestEZ
   details first.
 
+[Tool candidates](TOOL_CANDIDATES.md) lists open-source libraries and addons
+reviewed for the template (2026-11-24): which the engine already covers (Jolt,
+Recast, meshoptimizer, noise), which to install only when a design calls for them
+(Terrain3D, Material Maker, Effekseer, Voxel Tools), and which don't fit. The
+Director checks it when a design first needs terrain, materials, effects or
+destructible worlds.
+
 The Blender kit is a tool kit that sits beside an engine kit; the official
 Blender Lab MCP remains the candidate for live exploration and is not part of it.
 

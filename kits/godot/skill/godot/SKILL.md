@@ -62,6 +62,9 @@ changing engine versions, choosing an art style, or adding a test framework.
 - Content integration: [asset pipeline](references/asset_pipeline.md), with recorded
   asset provenance.
 - Export work when requested: [export targets](references/export_targets.md).
+- Third-party addons (terrain, voxels, effects, materials, physics): install none
+  unasked. `kits/TOOL_CANDIDATES.md` in the project root lists what the engine
+  already covers and what needs the designer's approval; flag the need instead.
 - Other helper examples: [upstream workflows](references/upstream-workflows.md).
   Paths there are relative to this skill root. Its mandatory template, playbook,
   style, and whole-project cleanup defaults are replaced by the work loop above.
