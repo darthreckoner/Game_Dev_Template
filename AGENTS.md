@@ -90,6 +90,10 @@ Director as a design question; the spec is probably wrong.
   come from `art/ART_BIBLE.md` or the designer. A coder that needs a value the
   bible lacks uses a neutral placeholder and flags it; the ticket was missing a
   value.
+- Creative in-game text a model writes (dialogue, lore, notes, item flavor) is a
+  placeholder and carries the literal marker `[AI]` inside the text until the
+  designer replaces or approves it. Factual text (UI labels, tooltips, system
+  messages) stays plain. The build check lists every `[AI]` line.
 - During a build, the coder makes its best call on gaps the documents leave open
   and records each under Assumptions in `STATE.md` for the designer to review. A
   request that conflicts with a pillar or anti-goal, or changes scope, is flagged,
@@ -124,7 +128,11 @@ Director as a design question; the spec is probably wrong.
   so state beats pixels.
 - End every build, ticket, and juice pass with the `build-check` skill. Add
   meaningful tests for rules, persistence, and regressions. Expected results come
-  from the design or an independent example, not from the implementation.
+  from the design or an independent example, not from the implementation. The
+  `blind-tester` agent tests each ticket's Promises without seeing the code.
+- `tools/shell_guard.py` runs before every shell and file-writing call and blocks
+  patterns that rules alone failed to stop (heredocs, `python -` from stdin, and
+  the blind tester reading code). A blocked call is not retried in another form.
 - Launch and look at the actual result when possible. If a check cannot run, say
   what is unverified and why. Don't weaken checks to get a pass or hide known
   failures.
@@ -201,6 +209,7 @@ All skills live in `.claude/skills/`, where Claude Code finds them:
   `art-direction`, `retro`.
 - Coder: `build-check`, `context-maintenance`, `token-waste`, and the engine
   kit's skill (for example `godot`) once installed from `kits/`.
+- Agent: `blind-tester` in `.claude/agents/`, spawned by `build-check`.
 
 Claude Code invokes a skill as `/build-check`. Codex invokes it as `$build-check`
 after `tools/sync-codex-skills.ps1` mirrors the coder skills into

@@ -28,7 +28,20 @@ until they actually occur. A checkpoint commit or ticket status cannot accept it
 4. **Scenarios:** run each scenario from `BUILD_PROMPT.md` or the ticket with its
    seed and scripted inputs, and assert the expected state. Read runtime
    diagnostics too; passing assertions can hide unrelated script errors.
-5. **Screenshots:** capture each named moment at the stated resolution into
+5. **Blind test:** spawn the `blind-tester` agent once per ticket (for a first
+   build or rebuild, once per mechanic). Give it the ticket's `Promises` verbatim
+   (for a build, that mechanic's Rules lines from `BUILD_PROMPT.md`), the entry
+   points it may drive (scene or class, public functions and signals, input
+   actions, debug hotkeys, the state dump), the project root, the engine run
+   command from the kit, and one persona, rotated: skeptical player, speedrunner,
+   completionist, confused newcomer. Don't pass code or documents. A run that
+   could not execute is a failure with its reason, never a skip. A failing case
+   is a known issue; a promise it calls untestable or vague goes to the Director.
+   Codex has no such agent: record "blind test not run" and why.
+6. **Hygiene:** run the engine kit's hygiene check on the changed files. Fix or
+   mark each finding (`# hygiene: keep` on a deliberate line), and confirm
+   `tests/blind/` is empty again. Note its count of `[AI]` placeholder lines.
+7. **Screenshots:** capture each named moment at the stated resolution into
    `docs/captures/<build>/<short-name>.png`, where `<build>` is `v1`, `rebuild-2`,
    `T-004`, and so on. For motion and juice, save a short frame sequence or several
    stills; the Director cannot watch video. Keep full sequences in ignored
@@ -39,7 +52,8 @@ commands.
 
 ## Record
 
-Update `STATE.md`: the Checks section (results, failures, the screenshots folder,
+Update `STATE.md`: the Checks section (results, failures, the blind test's
+persona and result, hygiene findings, `[AI]` line count, the screenshots folder,
 what could not be checked and why), then what exists, assumptions, known issues,
 friction (any command that failed or tool that misbehaved during the check), and
 next steps. For a ticket, set its status to done with the commit.

@@ -49,6 +49,30 @@ tool code; inspection is not a security sandbox.
 Exit code 0 means pass. See the test pattern in [game architecture](game-architecture.md).
 If the project adopts GUT or GdUnit4, `scripts/test/run_tests.py` detects and runs it.
 
+## Hygiene: leftovers
+
+```powershell
+& $python "$skill/scripts/test/hygiene_check.py" $project --pretty
+& $python "$skill/scripts/test/hygiene_check.py" $project --files scripts/player.gd scripts/jump.gd --pretty
+```
+
+Flags pass-only functions, TODOs, commented-out code, unused signals, files
+nothing references, temp files and anything left in `tests/blind/`, and lists
+`[AI]` placeholder text. Exit 1 means findings: fix them, or end a deliberate line
+with `# hygiene: keep`. `--files` limits the line checks to the change; the
+project-wide checks always run. `print` is not flagged.
+
+## Blind test
+
+The `blind-tester` agent runs its own test from Git Bash, so give it this form
+with your verified path:
+
+```bash
+"<godot console exe>" --headless --path "<project>" -s res://tests/blind/<file>.gd
+```
+
+The shell guard blocks it from reading anything outside `tests/blind/`.
+
 ## Scenarios and screenshots
 
 ```powershell

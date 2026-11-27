@@ -12,6 +12,7 @@ six months.
 |---|---|
 | `2026-09-25-ai-solo-game-dev-kit.md` | The evidence and tool landscape: why evidence loops beat process, why the agent must see and drive the game, why builder, judge, and acceptance stay separate, the engine and asset-service tables |
 | `2026-10-16-model-per-stage-guide.md` | Which model takes which seat at each stage, and the thirteen rules that matter more than model choice |
+| `2026-11-27-gg-godot-review.md` | Review of the gg-godot Claude Code plugin: four ideas borrowed (shell guard hook, blind tester, hygiene check, `[AI]` text marker), the rest declined with reasons |
 
 ## Vocabulary map
 

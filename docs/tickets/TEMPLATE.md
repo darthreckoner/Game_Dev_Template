@@ -13,4 +13,6 @@ Values: [exact numbers, timings, colors, asset IDs, from DESIGN.md or the art bi
 Tuning knobs: [values to expose]
 Try first: [tuning or juice change before logic change?]
 Check: [test, scenario, or screenshot that shows it works; expected values from the design]
+Promises: [what the change guarantees, one per line, with numbers, what it refuses, and
+  what it must not do; the blind tester tests these without seeing the code]
 Done when: playable + knobs adjustable + /build-check run + STATE.md updated

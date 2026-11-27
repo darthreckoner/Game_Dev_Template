@@ -114,8 +114,10 @@ reviews" in `STATE.md`. A plan review can stay in chat.
 - **Patch** when the core loop is intact and the problems are feel, balance, or
   bugs. Copy `docs/tickets/TEMPLATE.md` to `docs/tickets/T-###-short-name.md`,
   numbered in order, one change per ticket, with a tier (routine, standard,
-  complex) that picks the coder's model, the files it may touch, and exact
-  values. List it in `STATE.md`. A ticket whose spec you cannot pin down is
+  complex) that picks the coder's model, the files it may touch, exact
+  values, and Promises (what it guarantees, refuses and must not do, with
+  numbers; the blind tester checks these without the code, so the Director
+  writes them, not the coder). List it in `STATE.md`. A ticket whose spec you cannot pin down is
   ambiguous: resolve it with the designer first.
 - **Rebuild** when the loop, pillars, or architecture changed, the codebase has
   drifted across several sessions, or two full rounds failed acceptance. Update

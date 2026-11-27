@@ -43,7 +43,10 @@ tests, and named-moment screenshots.
 For the build check (`/build-check` in Claude Code, `$build-check` in Codex), use
 direct tests for rules, `scripts/debug/run_scenario.py` for scenario assertions,
 UI reports, and screenshots, and Movie Maker PNG sequences for motion and juice.
-Commands are in [Windows commands](references/windows.md).
+`scripts/test/hygiene_check.py` finds leftovers (stubs, TODOs, commented-out
+code, unused signals and files). The `blind-tester` agent drives a headless
+`SceneTree` test under `tests/blind/`. Commands are in
+[Windows commands](references/windows.md).
 
 ## Save and scope boundaries
 
