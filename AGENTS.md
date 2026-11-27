@@ -206,7 +206,7 @@ unknown outcomes before retrying.
 All skills live in `.claude/skills/`, where Claude Code finds them:
 
 - Director: `game-director` (design, build prompt, reviews, tickets, playtests),
-  `art-direction`, `retro`.
+  `art-direction`, `retro`, `cleanup` (disk space and old worktrees).
 - Coder: `build-check`, `context-maintenance`, `token-waste`, and the engine
   kit's skill (for example `godot`) once installed from `kits/`.
 - Agent: `blind-tester` in `.claude/agents/`, spawned by `build-check`.
