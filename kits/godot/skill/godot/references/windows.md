@@ -60,7 +60,9 @@ Flags pass-only functions, TODOs, commented-out code, unused signals, files
 nothing references, temp files and anything left in `tests/blind/`, and lists
 `[AI]` placeholder text. Exit 1 means findings: fix them, or end a deliberate line
 with `# hygiene: keep`. `--files` limits the line checks to the change; the
-project-wide checks always run. `print` is not flagged.
+project-wide checks always run. `print` is not flagged. Folders whose name starts
+with a dot, `kits/`, `docs/`, `art/`, `work/` and `addons/` are not read; scripts
+under `tests/` and `tools/` are not counted as unused files.
 
 ## Blind test
 

@@ -8,7 +8,8 @@ Flags, in scripts (all, or only the files given with --files):
   unused_signal   a signal never emitted in its file and never named elsewhere
 Project-wide:
   unreferenced    a script, scene, resource or shader nothing points to
-                  (by file name, uid, or class_name), not the main scene or an autoload
+                  (by file name, uid, or class_name), not the main scene or an autoload;
+                  tests/ and tools/ are exempt (run by command, not referenced)
   temp_file       *.tmp, *.bak, *.orig, *~
   blind_leftover  files left in tests/blind/ after a blind test
 Reported, never a failure:
@@ -25,11 +26,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from pathlib import Path
 
-SKIP_DIRS = {".godot", ".git", "addons", "work", ".workflow", "node_modules", "docs", "art"}
+SKIP_DIRS = {".godot", ".git", "addons", "work", ".workflow", "node_modules", "docs", "art", "kits"}
 SOURCE_EXT = {".gd", ".tscn", ".tres", ".gdshader"}
 SEARCH_EXT = SOURCE_EXT | {".godot", ".json", ".cfg", ".res"}
 AI_TEXT_EXT = {".gd", ".tscn", ".tres", ".csv", ".json", ".po", ".txt", ".cfg"}
@@ -51,11 +53,14 @@ CLASS_NAME = re.compile(r"^\s*class_name\s+([A-Za-z_]\w*)", re.M)
 
 
 def walk(root: Path):
-    for path in root.rglob("*"):
-        rel = path.relative_to(root)
-        if any(part in SKIP_DIRS for part in rel.parts[:-1]) or not path.is_file():
-            continue
-        yield path, rel.as_posix()
+    """Project files. Skipped folders are never entered: SKIP_DIRS and every folder
+    whose name starts with a dot (.claude/worktrees holds whole checkouts, .agents
+    mirrors the skills, .godot.bak-* is a cache copy)."""
+    for folder, dirs, names in os.walk(root):
+        dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not d.startswith(".")]
+        for name in names:
+            path = Path(folder) / name
+            yield path, path.relative_to(root).as_posix()
 
 
 def read(path: Path) -> str:
@@ -131,7 +136,7 @@ def main(argv=None) -> int:
     main_scene = main_scene.group(1) if main_scene else ""
     autoloads = set(re.findall(r'^\w+="\*?res://([^"]+)"', project, re.M))
     for path, rel in files:
-        if path.suffix not in SOURCE_EXT or rel.startswith("tests/") or rel in autoloads:
+        if path.suffix not in SOURCE_EXT or rel.startswith(("tests/", "tools/")) or rel in autoloads:
             continue
         uid_file = path.with_name(path.name + ".uid")
         uid = read(uid_file).strip() if uid_file.is_file() else ""
